@@ -37,7 +37,7 @@
 					h2,
 					h3 {
 					  margin: 10px;
-					  font-size: 1.2em;
+					  font-size: 1em;
 					}
 
 					h3 {
@@ -45,7 +45,7 @@
 					}
 
 					p {
-					  font-size: 0.85em;
+					  font-size: 0.7em;
 					  margin: 10px;
 					  text-align: left;
 					}
@@ -67,7 +67,7 @@
 					.map-overlay {
 					  position: absolute;
 					  bottom: 0;
-					  right: 0;
+					  right: 100;
 					  background: rgba(255, 255, 255, 0.8);
 					  margin-right: 20px;
 					  font-family: Arial, sans-serif;
@@ -89,6 +89,7 @@
 					  height: 150px;
 					  margin-bottom: 40px;
 					  width: 100px;
+						font-size: 1em;
 					}
 
 					.legend-key {
@@ -97,6 +98,9 @@
 					  width: 10px;
 					  height: 10px;
 					  margin-right: 5px;
+						font-size: 1em;
+						font-family: Arial, sans-serif;
+
 					}
 
 </style>
@@ -111,7 +115,10 @@
     <div id="after" class="map"></div>
 </div>
 <div id='map'></div>
-<div class='map-overlay' id='features'><h2>US population density</h2><div id='pd'><p>Hover over a state!</p></div></div>
+<div class='map-overlay' id='features'><h2>Buildings Covered by Local Law 97</h2>
+	<div id='pd'><p>Left Map: Estimated Covered Buildings</p>
+	<p>Right Map: Covered Buildings with Data</p>
+	<p>Source: NYC PLUTO and Local Law 84 Disclosure Data</p></div></div>
 <div class='map-overlay' id='legend'></div>
 
 
