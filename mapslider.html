@@ -135,14 +135,15 @@
         container: 'before',
         style: 'mapbox://styles/yekim92/ck9rpo2qn0tzs1ioz0naklhry',
 				center: [-73.922160,40.755840],
-				zoom: 12
-    });
+				zoom: 12,
+			  minZoom: 12,    });
 
     var afterMap = new mapboxgl.Map({
         container: 'after',
 				style: 'mapbox://styles/yekim92/ck9qelzbo10t91iob7jlg7tbk',
 				center: [-73.922160,40.755840],
-				zoom: 12
+				zoom: 12,
+				minZoom: 12,
 		});
 		afterMap.on('load', function() {
 
