@@ -65,9 +65,9 @@
 					* (information box and legend) will be displayed
 					* on the page. */
 					.map-overlay {
-					  position: absolute;
-					  bottom: 0;
-					  right: 100;
+					  position: fixed;
+					  top: 0;
+					  left: 0;
 					  background: rgba(255, 255, 255, 0.8);
 					  margin-right: 20px;
 					  font-family: Arial, sans-serif;
@@ -78,11 +78,11 @@
 					#features {
 					  top: 0;
 					  height: 100px;
-					  margin-top: 20px;
+					  margin-top: 0px;
 					  width: 250px;
 					}
 
-					#legend {
+					/* #legend {
 					  padding: 10px;
 					  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 					  line-height: 18px;
@@ -99,7 +99,7 @@
 					  height: 10px;
 					  margin-right: 5px;
 						font-size: 1em;
-						font-family: Arial, sans-serif;
+						font-family: Arial, sans-serif; */
 
 					}
 
@@ -111,15 +111,22 @@
     type="text/css"
 />
 <div id="comparison-container">
+
     <div id="before" class="map"></div>
     <div id="after" class="map"></div>
+		<div class='map-overlay' id='features'><h2>Visualizing Data Gaps for Local Law 97</h2>
+			<div id='pd'>
+			<p>Swipe and pan around the map to explore which covered buildings that have no emissions data.</p>
+			<p>Left Map: Estimated Covered Buildings</p>
+			<p>Right Map: Covered Buildings with Data</p>
+			<p>Source: NYC PLUTO and Local Law 84 Disclosure Data</p></div></div>
 </div>
-<div id='map'></div>
-<div class='map-overlay' id='features'><h2>Buildings Covered by Local Law 97</h2>
+<!-- <div id='map'></div> -->
+<!-- <div class='map-overlay' id='features'><h2>Buildings Covered by Local Law 97</h2>
 	<div id='pd'><p>Left Map: Estimated Covered Buildings</p>
 	<p>Right Map: Covered Buildings with Data</p>
 	<p>Source: NYC PLUTO and Local Law 84 Disclosure Data</p></div></div>
-<div class='map-overlay' id='legend'></div>
+<div class='map-overlay' id='legend'></div> -->
 
 
 <script>
@@ -127,14 +134,14 @@
     var beforeMap = new mapboxgl.Map({
         container: 'before',
         style: 'mapbox://styles/yekim92/ck9rpo2qn0tzs1ioz0naklhry',
-				center: [-73.966487,40.766451],
+				center: [-73.922160,40.755840],
 				zoom: 12
     });
 
     var afterMap = new mapboxgl.Map({
         container: 'after',
 				style: 'mapbox://styles/yekim92/ck9qelzbo10t91iob7jlg7tbk',
-				center: [-73.966487,40.766451],
+				center: [-73.922160,40.755840],
 				zoom: 12
 		});
 		afterMap.on('load', function() {
@@ -160,23 +167,23 @@
 
 		//create map legend
 		//set colors and labels for legend
-		var layers = ['Covered Buildings with Data', 'Covered Buildings without Data'];
-		var colors = ['#00A780', '#FF7A2A']
-
-		for (i = 0; i < layers.length; i++) {
-  var layer = layers[i];
-  var color = colors[i];
-  var item = document.createElement('div');
-  var key = document.createElement('span');
-  key.className = 'legend-key';
-  key.style.backgroundColor = color;
-
-  var value = document.createElement('span');
-  value.innerHTML = layer;
-  item.appendChild(key);
-  item.appendChild(value);
-  legend.appendChild(item);
-}
+// 		var layers = ['Covered Buildings with Data', 'Covered Buildings without Data'];
+// 		var colors = ['#00A780', '#FF7A2A']
+//
+// 		for (i = 0; i < layers.length; i++) {
+//   var layer = layers[i];
+//   var color = colors[i];
+//   var item = document.createElement('div');
+//   var key = document.createElement('span');
+//   key.className = 'legend-key';
+//   key.style.backgroundColor = color;
+//
+//   var value = document.createElement('span');
+//   value.innerHTML = layer;
+//   item.appendChild(key);
+//   item.appendChild(value);
+//   legend.appendChild(item);
+// }
 
 </script>
 
