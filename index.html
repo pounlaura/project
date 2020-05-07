@@ -52,7 +52,7 @@
 
 		svg {
 			width:100%;
-			height:600px;
+			/* height:500px; */
 			padding-left:5%;
 			padding-right:50px;
 		}
@@ -80,6 +80,51 @@
     word-wrap:  break-word;
     width:400px;
     }
+/* header style */
+main header.story-header {
+  background-color: #214B47;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* opacity: 0.6; */
+  height: 100vh;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  z-index: 99;
+}
+main header.story-header .story-meta {
+  z-index: 2;
+  padding: 2rem 2rem 3rem;
+  color: white;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  animation: fadeIn;
+  animation-delay: 4s;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  width: 100%;
+}
+main h4.section-header {
+    font-size: 3.5rem;
+    width: 33rem;
+    padding: 1rem;
+    text-indent: -0.2em;
+    margin-left: 4rem;
+    margin-bottom: 2rem;
+    margin-top: 4rem;
+}
+article {
+  position: relative;
+}
+figure.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
 /* making timeline sticky */
     #timelinediv {
       position: -webkit-sticky;
@@ -93,7 +138,7 @@
         position: sticky;
         top: -1px;
         }
-/* reveal css */
+/* hide and reveal scrolly css */
         .hidden {
         		opacity: 0;
         		-webkit-transform: scale(0.9);
@@ -122,57 +167,14 @@
         transition: opacity 0.8s;
         -webkit-transition: opacity 0.8s;
         } */
-        /* highlight text css */
+/* highlight text css */
     .active {
         opacity:1;
         background-color: #214B47;
         color: white;
         font-weight:400;
         }
-    main header.story-header {
-      background-color: #214B47;
-      background-size: cover;
-      background-repeat: no-repeat;
-      opacity: 0.6;
-      height: 100vh;
-      position: relative;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-      align-items: center;
-      -ms-flex-pack: start;
-      justify-content: flex-start;
-      z-index: 99;
-    }
-    main header.story-header .story-meta {
-      z-index: 2;
-      padding: 2rem 2rem 3rem;
-      color: white;
-      -ms-flex-item-align: end;
-      align-self: flex-end;
-      animation: fadeIn;
-      animation-delay: 4s;
-      animation-duration: 2s;
-      animation-fill-mode: both;
-      width: 100%;
-    }
-    main h4.section-header {
-        font-size: 3.5rem;
-        width: 33rem;
-        padding: 1rem;
-        text-indent: -0.2em;
-        margin-left: 4rem;
-        margin-bottom: 2rem;
-        margin-top: 4rem;
-    }
-    article {
-      position: relative;
-    }
-    figure.sticky {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 0;
-    }
+
 /* styles for firstsection */
     .firstsection {
       display: flex;
@@ -199,9 +201,9 @@
       flex-direction: column;
       justify-content: center;
     }
-    /**
-     * Map Styles
-    */
+  /**
+    * Map-related Styles
+  */
     .maprow {
       position: relative;
       margin-left: calc((-100vw + 1140px - 60px)/2);
@@ -211,7 +213,7 @@
 
     .maptitle {
       display: flex;
-      margin-left: calc((-100vw + 1140px - 50px)/2);
+      margin-left: calc((-100vw + 1140px - 30px)/2);
       width: 100vw;
     }
 
@@ -348,9 +350,10 @@
       </div>
 </div>
       <br>
+      <!-- diagram 1 -->
 <div class="row">
         <div class="col-4 center">
-          <br><br>
+
           <h5>Buildings are responsible for 60% of NYC's emissions.</h5>
 
          </div>
@@ -358,9 +361,32 @@
         <br><br>
         <div id="firstvisualdiv">
          <center>
-         <div class="squaresvg"></div>
-         <br>
+         <div class="squaresvg">
+         </div>
         </center>
+        <figcaption style="padding-left: 40px">Source: Urban Green Council
+        </figcaption>
+        <br><br><br>
+            </div>
+        </div>
+        <br>
+</div>
+<!-- diagram 2 -->
+<div class="row">
+        <div class="col-4 center">
+          <br><br>
+          <h5>Covered buildings under LL97 emitted 19.5 million metric tons in 2018.</h5>
+
+         </div>
+      <div class="col-8">
+        <br><br>
+        <div id="firstvisualdiv">
+         <center>
+         <div class="square2svg">
+         </div>
+        </center>
+        <figcaption style="padding-left: 40px">Source: Urban Green Council
+        </figcaption>
         <br><br><br>
             </div>
         </div>
@@ -387,7 +413,7 @@
       </h5>
     </div>
     <div>
-      <h5 style="color: #386C50"> Right: Covered Buildings with Available Data
+      <h5 style="color: #00A780"> Right: Covered Buildings with Available Data
       </h5>
     </div>
 </div>
@@ -516,7 +542,7 @@ var controller = new ScrollMagic.Controller();
                               })
           .setClassToggle("#firstsection3", "visible")
           .addTo(controller);
-
+          // scene for timeline
       new ScrollMagic.Scene({triggerElement: "#trigger3",
                             triggerHook: "onleave",
                             duration: 0,
@@ -524,12 +550,13 @@ var controller = new ScrollMagic.Controller();
                               })
           .setClassToggle("#timelinediv", "visible")
           .addTo(controller);
+          // scene for diagram 1 text
 
 
 var scrollVis = function() {
   var width = 600;
   var height = 550;
-  var margin = {top:0, left:20, bottom: 40, right:10};
+  var margin = {top:0, left:20, bottom: 0, right:10};
 
   var lastIndex = -1;
   var activeIndex = 0;
@@ -539,42 +566,28 @@ var scrollVis = function() {
   var squarePad = 2;
   var numPerRow = width/ (squareSize + squarePad);
 
-// main svg for viz
-  var svg=null;
-// d3 selection that will be used for displaying viz
-  var g = null;
+// // main svg for viz
+//   var svg=null;
+// // d3 selection that will be used for displaying viz
+//   var g = null;
 
   // when scrolling to a new section the activation function for that section is called
   var activateFunctions = [];
 
   // if a section has an update function then it is called while scrolling through the section with the current progress through the section
   var updateFunctions = [];
+//
+// var svg = d3.select('.squaresvg').append('svg');
+//     .attr("width", width)
+//     .attr("height", height)
+//     .append("g");
 
+// first diagram
   svg = d3.select('.squaresvg').append('svg');
   svg.attr('width', width).attr('height', height);
   svg.append('g');
   g = svg.select('g');
 
-    // square grid
-    // var squares = g.selectAll('.square').data(d.dataTot);
-    // var squaresE = squares.enter()
-    //   .append('rect')
-    //   .classed('square', true);
-    // squares = squares.merge(squaresE)
-    //   .attr('width', squareSize)
-    //   .attr('height', squareSize)
-    //   .attr('fill', '#fff')
-    //   .classed('fill-square', function (d) { return d.dataDiv[0]; })
-    //   .attr('x', function (d) { return d.x;})
-    //   .attr('y', function (d) { return d.y;})
-    //   .attr('opacity', 0);
-    //   var setupSections = function () {
-    // // activateFunctions are called each
-    // // time the active section changes
-    // activateFunctions[0] = showGrid;
-    // activateFunctions[1] = highlightGrid;
-
-    // var squares = g.selectAll('.square').data(d.dataTot);
   var squares = [];
   for (let i = 0; i < 5070; i += 1) {
     var square = g.append('rect').classed('square', true)
@@ -583,7 +596,7 @@ var scrollVis = function() {
     .attr('fill', function() {
       return i < 1730
         ? '#CEDED6'
-        : '#00A780';
+        : '#214B47';
     })
     .attr('x', function() {
       return (i * 8)%600;
@@ -594,7 +607,43 @@ var scrollVis = function() {
     .attr('opacity', 1);
     squares.push(square);
   }
+// second diagram
+svg = d3.select('.square2svg').append('svg');
+svg.attr('width', width).attr('height', height);
+svg.append('g');
+g = svg.select('g');
+
+var squares = [];
+for (let i = 0; i < 5070; i += 1) {
+  var square = g.append('rect').classed('square', true)
+  .attr('width', squareSize)
+  .attr('height', squareSize)
+  // .attr('fill', function() {
+  //   return i < 1730
+  //     ? '#CEDED6'
+  //     : '#214B47';
+  .attr('fill', function(){
+    return i > 3120
+    ? '#00A780'
+    : i < 1730
+    ? '#CEDED6'
+    : '#214B47';
+  })
+  // })
+  .attr('x', function() {
+    return (i * 8)%600;
+  })
+  .attr('y', function() {
+    return Math.floor((i*8)/600) * 8;
+  })
+  .attr('opacity', 1);
+  squares.push(square);
+}
 };
+
+
+
+
 scrollVis();
 
 mapboxgl.accessToken = 'pk.eyJ1IjoieWVraW05MiIsImEiOiJjazhueGlwdHMxM2s0M2ZxeDF5ZTN3azk2In0.M9yh1eYd5GJ6CYgW2hMoZA';
