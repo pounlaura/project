@@ -392,16 +392,17 @@ figure.sticky {
       <!-- diagram 1 -->
 <div class="row">
         <div class="col-4 emissionsTextColumn">
-          <h5 id="emissionsHeadline1">Buildings are responsible for 60% of NYC's emissions.</h5>
-          <h5 id="emissionsHeadline2">Covered buildings under LL84 emitted 19.5 million metric tons in 2018.
+          <h5 id="emissionsHeadline1">NYC's annual emissions are 50.7 million metric tons.</h5>
+          <h5 id="emissionsHeadline2">Buildings are responsible for 70% of NYC's emissions.</h5>
+          <h5 id="emissionsHeadline3">Covered buildings under LL84 emitted 19.5 million metric tons in 2018.
           <p class="caveat">*estimated emissions from [20,000] covered buildings</p></h5>
-          <h5 id="emissionsHeadline3">LL97 aims to reduce at least 5.3 million metric tons by 2030 from covered buildings.</h5>
+          <h5 id="emissionsHeadline4">LL97 aims to reduce at least 5.3 million metric tons by 2030 from covered buildings.</h5>
         </div>
       <div class="col-8" id="firstvisualdiv">
         <br><br>
         <!-- <div id="firstvisualdiv"> -->
          <div class="squaresvg">
-           <figcaption style="padding-left: 40px">Source: Urban Green Council
+           <figcaption style="padding-left: 40px">1 square = 10000 metric tons; Source: Urban Green Council
            </figcaption>
          </div>
 
@@ -586,6 +587,15 @@ var controller = new ScrollMagic.Controller();
       })
       .setClassToggle("#emissionsHeadline1", "sticky")
       .addTo(controller);
+
+//scene for diagram 1
+      new ScrollMagic.Scene({
+        triggerElement: "#emissionsHeadline1",
+        triggerHook: "onEnter",
+        duration: 0,
+      })
+      .addTo(controller)
+      .on('enter', squaresFill);
 // scene for diagram 2
       new ScrollMagic.Scene({
         triggerElement: "#emissionsHeadline2",
@@ -593,7 +603,7 @@ var controller = new ScrollMagic.Controller();
         duration: 0,
       })
       .addTo(controller)
-      .on('enter', squaresTransition);
+      .on('enter', squaresBuildings);
 // scene for diagram 3
       new ScrollMagic.Scene({
         triggerElement: "#emissionsHeadline3",
@@ -601,9 +611,36 @@ var controller = new ScrollMagic.Controller();
         duration: 0,
       })
       .addTo(controller)
+      .on('enter', squaresTransition);
+// scene for diagram 4
+      new ScrollMagic.Scene({
+        triggerElement: "#emissionsHeadline4",
+        triggerHook: "onEnter",
+        duration: 0,
+      })
+      .addTo(controller)
       .on('enter', squaresMove);
 
-// second diagram
+//diagram 1
+      function squaresFill(){
+        var squares = d3.select('.squaresvg').selectAll('rect')
+        .attr('fill', "#CEDED6")
+        // .attr('fill', function(datum, index, nodes) {
+        //   return index < 5071
+        //   ? 'CEDED6'
+        //   : d3.select(nodes[index]).attr('fill');
+        // })
+      }
+// diagram 2
+      function squaresBuildings() {
+        var squares = d3.select('.squaresvg').selectAll('rect')
+          .attr('fill', function(datum, index, nodes){
+            return index < 1730
+              ? '#CEDED6'
+              : '#214B47';
+          })
+      }
+// diagram 3
       function squaresTransition() {
         var squares = d3.select('.squaresvg').selectAll('rect')
           .attr('fill', function(datum, index, nodes) {
@@ -611,9 +648,9 @@ var controller = new ScrollMagic.Controller();
             ? '#00A780'
             : d3.select(nodes[index]).attr('fill');
           })
-         d3.select('figcaption').html("<span>Source: Energy and Water Disclosure Data for Local Law 84 (2019)</span>");
+         d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: Energy and Water Disclosure Data for Local Law 84 (2019)</span>");
       }
-// third diagram
+// diagram 4
       function squaresMove () {
         var squaresvg = d3.select('.squaresvg');
         var stayEmissions = squaresvg.select('.stayEmissions');
@@ -654,7 +691,7 @@ var controller = new ScrollMagic.Controller();
           }
         });
 
-        d3.select('figcaption').html("<span>Source: Urban Green Council, Local Law 97</span>");
+        d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: Urban Green Council, Local Law 97</span>");
       }
 
       // save for later
@@ -681,7 +718,7 @@ var scrollVis = function() {
   var squarePad = 2;
   var numPerRow = width/ (squareSize + squarePad);
 
-// first diagram
+// second diagram
   svg = d3.select('.squaresvg').insert('svg', ':first-child');
   svg.attr('width', width).attr('height', height);
   var stayEmissions = svg.append('g');
@@ -690,6 +727,22 @@ var scrollVis = function() {
     reducedEmissions.attr("class", "reducedEmissions");
 
   var squares = [];
+
+  // for (let i = 0; i<5071; i+=1){
+  //  var square = allEmissions.append('rect').classed('square', true)
+  //  .attr('width', squareSize)
+  //  .attr('height', squareSize)
+  //  .attr('fill', '#CEDED6')
+  //  .attr('x', function() {
+  //    return (i * 8)%600;
+  //  })
+  //  .attr('y', function() {
+  //    return Math.floor((i*8)/600) * 8;
+  //  })
+  //  .attr('opacity', 1);
+  //  squares.push(square);
+  // }
+  //building emissions
   for (let i = 0; i < 4541; i += 1) {
     var square = stayEmissions.append('rect').classed('square', true)
     .attr('width', squareSize)
