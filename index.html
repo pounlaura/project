@@ -210,7 +210,7 @@ figure.sticky {
         color: white;
         font-weight:400;
         }
-    }
+
 
 /* styles for firstsection */
     .firstsection {
@@ -252,6 +252,7 @@ figure.sticky {
       display: flex;
       margin-left: calc((-100vw + 1140px - 30px)/2);
       width: 100vw;
+      margin-bottom: 100px;
     }
 
     .maptitle > div {
@@ -395,7 +396,7 @@ figure.sticky {
           <h5 id="emissionsHeadline1">NYC's annual emissions are 50.7 million metric tons.</h5>
           <h5 id="emissionsHeadline2">Buildings are responsible for 70% of NYC's emissions.</h5>
           <h5 id="emissionsHeadline3">Covered buildings under LL84 emitted 19.5 million metric tons in 2018.
-          <p class="caveat">*estimated emissions from [20,000] covered buildings</p></h5>
+          <p class="caveat">*estimated emissions from 25,164 covered buildings</p></h5>
           <h5 id="emissionsHeadline4">LL97 aims to reduce at least 5.3 million metric tons by 2030 from covered buildings.</h5>
         </div>
       <div class="col-8" id="firstvisualdiv">
@@ -474,48 +475,16 @@ figure.sticky {
     </div>
 </div>
 
-      <div class="row">
+<div class="row">
         <div class="col-4">
           <br><br>
-          <h7>Local Law 97:</h7>
-          <!-- <br>
-           <p>
-             [EDIT] The law indicates that approximately 60% of NYC's building area is
-covered under the law, translating to about 50,000 buildings. Updating
-and retrofiting 50,000 bulidings in the next four years is a tall task that
- can be difficult to comprehend. Thousands of landlords will have to
-take action and NYC will have to implement programs to support building
-retrofits and monitor progress. </p>
-             <br> -->
-
-           <br>
+          <h5 id="barGraphText1">COMPARISON GRAPH HERE</h5>
          </div>
-           <div class="col-8">
-             <br>
-             <p>
-              <br>
-              <ul>
-              <li>Affects buildings greater than 25,000 square feet</li>
-              <li>Sets increasingly stringent limits on carbon emissions per
-              square foot in 2024 and 2030</li>
-              <li>Flexibility to comply through renewable energy credits and/or
-              emissions offsets </li>
-              <li>Allows some affordable housing to choose low-cost energysaving measures instead of emissions limits</li>
-              <li>Creates a new Office of Building Energy and Emissions Performance at
-              Department of Buildings</li>
-              <li>Strong advisory board to help refine emissions metrics and
-              limits</li>
-              <li>Carbon trading study and implementation plan</li>
-              <li>Penalties for non-compliance and variances for financial
-              hardship</li>
-             </ul>
-             </p>
-               <br>
-         </div>
-         <br>
-
-</div>
-
+      <div class="col-8">
+        <div class=bar>
+        </div>
+      </div>
+    </div>
 
   </main><!-- /.container -->
 
@@ -590,7 +559,7 @@ var controller = new ScrollMagic.Controller();
 
 //scene for diagram 1
       new ScrollMagic.Scene({
-        triggerElement: "#emissionsHeadline1",
+        triggerElement: "emissionsHeadline1",
         triggerHook: "onEnter",
         duration: 0,
       })
@@ -620,6 +589,14 @@ var controller = new ScrollMagic.Controller();
       })
       .addTo(controller)
       .on('enter', squaresMove);
+// bar graph appear
+      new ScrollMagic.Scene({
+        triggerElement: "#barGraphText1",
+        triggerHook: "onEnter",
+        duration: 0,
+      })
+      .addTo(controller)
+      .on('enter', barShow);
 
 //diagram 1
       function squaresFill(){
@@ -634,8 +611,11 @@ var controller = new ScrollMagic.Controller();
 // diagram 2
       function squaresBuildings() {
         var squares = d3.select('.squaresvg').selectAll('rect')
-          .attr('fill', function(datum, index, nodes){
-            return index < 1730
+          .transition()
+          .duration(1000)
+          .attrTween('fill', function(datum, index, nodes){
+            return
+            index < 1730
               ? '#CEDED6'
               : '#214B47';
           })
@@ -781,11 +761,51 @@ var scrollVis = function() {
     squares.push(square);
   }
 };
-
-
-
-
 scrollVis();
+
+var barGraphSvg = function() {
+  var width = 600;
+  var height = 550;
+  var margin = {top:0, left:20, bottom: 0, right:10};
+
+  var yBarScale = d3.scaleBand()
+    .paddingInner(0.08)
+    .domain([0, 1, 2])
+    .range([0, height - 50], 0.1, 0.1);
+
+  // Color is determined just by the index of the bars
+  var barColors = { 0: '#00A780', 1: '#FF7A2A'};
+
+nicholas = [["Primary Use", 47.5], ["Top Three Uses",36.2]];
+
+var svg = d3.select('.bar')
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
+svg.selectAll("rect")
+        .data(nicholas)
+        .enter()
+        .append("rect")
+        .attr('x', 0)
+        .attr('y', function (datum, index) { return yBarScale(index);})
+        .attr('fill', function (datum, index) { return barColors[index]; })
+        .attr('width', 0)
+        .attr('height', yBarScale.bandwidth());
+};
+function barShow() {
+  var xBarScale = d3.scaleLinear()
+   .domain([0,50])
+   .range([0, 600]);
+  var bar = d3.select('.bar').selectAll('rect')
+    .transition()
+    .duration(600)
+    .attr('width', function(datum, index){
+      return xBarScale(datum[1]);
+    });
+}
+barGraphSvg();
+
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoieWVraW05MiIsImEiOiJjazhueGlwdHMxM2s0M2ZxeDF5ZTN3azk2In0.M9yh1eYd5GJ6CYgW2hMoZA';
   var beforeMap = new mapboxgl.Map({
