@@ -341,9 +341,9 @@ figure.sticky {
           </div>
           <div id="firstsection2" class="hidden">
             <!-- <div class= -->
-            <h5>Local Law 84 </h5>
+            <h5>Local Law 84 requires building owners to report emissions every year</h5>
             <p>
-              Some other subject
+              [talk about 25,000 sq. ft. requirement and how this data lays the groundwork for LL97]
               <br>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
@@ -395,7 +395,7 @@ figure.sticky {
           <h5 id="emissionsHeadline1">Buildings are responsible for 60% of NYC's emissions.</h5>
           <h5 id="emissionsHeadline2">Covered buildings under LL84 emitted 19.5 million metric tons in 2018.
           <p class="caveat">*estimated emissions from [20,000] covered buildings</p></h5>
-          <h5 id="emissionsHeadline3">LL97 aims to reduce at least 5.3 million metric tons by 2030.</h5>
+          <h5 id="emissionsHeadline3">LL97 aims to reduce at least 5.3 million metric tons by 2030 from covered buildings.</h5>
         </div>
       <div class="col-8" id="firstvisualdiv">
         <br><br>
@@ -410,30 +410,18 @@ figure.sticky {
         </div>
         <br>
 </div>
-<!-- diagram 2 -->
-<!-- <div class="row">
-        <div class="col-4 center">
-          <br><br>
-          <h5>Covered buildings under LL97 emitted 19.5 million metric tons in 2018.</h5>
-
-         </div>
-      <div class="col-8">
-        <br><br>
-        <div id="secondvisualdiv">
-         <center>
-         <div class="square2svg">
-         </div>
-        </center>
-        <figcaption style="padding-left: 40px">Source: Urban Green Council
-        </figcaption>
-        <br><br><br>
-            </div>
-        </div>
-        <br>
-</div> -->
+<!-- transition -->
+<div class="row">
+  <div class="col-4">
+    <h5>How much GHG emissions does each covered building have to reduce to meet LL97 goals?
+    </h5>
+  </div>
+  <div class="col-8">
+  </div>
+</div>
 <!-- map intro -->
 <div class="row">
-        <div class="col-4 center">
+        <div class="col-4">
           <br><br>
           <h5>Large gaps in data make it difficult to visualize LL97.</h5>
           <p> Under LL97's covered buildings qualifications, 50,000 buildings throughout all 5 boroughs should be subject to comply.
@@ -448,11 +436,11 @@ figure.sticky {
 
 <div class="maptitle">
     <div>
-      <h5 style= "color: #FF7A2A">Left: LL97 Covered Buildings
+      <h5 style= "color: #FF7A2A">Buildings that are subject to LL97
       </h5>
     </div>
     <div>
-      <h5 style="color: #00A780"> Right: Covered Buildings with Available Data
+      <h5 style="color: #00A780">Buildings that reported emissions under LL84
       </h5>
     </div>
 </div>
@@ -590,7 +578,7 @@ var controller = new ScrollMagic.Controller();
                               })
           .setClassToggle("#timelinediv", "visible")
           .addTo(controller);
-          // scene for diagram 1 text
+          // scene for diagram texts
       new ScrollMagic.Scene({
         triggerElement: "#emissionsHeadline1",
         triggerHook: "onCenter",
@@ -598,7 +586,7 @@ var controller = new ScrollMagic.Controller();
       })
       .setClassToggle("#emissionsHeadline1", "sticky")
       .addTo(controller);
-
+// scene for diagram 2
       new ScrollMagic.Scene({
         triggerElement: "#emissionsHeadline2",
         triggerHook: "onEnter",
@@ -606,7 +594,7 @@ var controller = new ScrollMagic.Controller();
       })
       .addTo(controller)
       .on('enter', squaresTransition);
-
+// scene for diagram 3
       new ScrollMagic.Scene({
         triggerElement: "#emissionsHeadline3",
         triggerHook: "onEnter",
@@ -623,7 +611,7 @@ var controller = new ScrollMagic.Controller();
             ? '#00A780'
             : d3.select(nodes[index]).attr('fill');
           })
-         d3.select('figcaption').html("<span>Source: Energy and Water Disclosure (2018)</span>");
+         d3.select('figcaption').html("<span>Source: Energy and Water Disclosure Data for Local Law 84 (2019)</span>");
       }
 // third diagram
       function squaresMove () {
@@ -654,12 +642,15 @@ var controller = new ScrollMagic.Controller();
         .duration(1000)
         .attrTween("x", function(datum, index){
           return function(t){
-          return (index * 8)%304;
+            const originalPosition = (index * 8)%600;
+            const finalPosition = (index *8)%304;
+            return originalPosition - t*(originalPosition-finalPosition);
         }})
         .attrTween("y", function(datum, index){
           return function(t){
-            var newYPosition = 480 + (Math.floor(index/38)*8);
-            return newYPosition;
+            var originalPosition = Math.floor(((index + 4541)*8)/600) * 8;
+            var finalPosition = ((4541*8)/600*8) + (Math.floor(index / 38) * 8);
+            return originalPosition - t*(originalPosition - finalPosition);
           }
         });
 
@@ -689,22 +680,6 @@ var scrollVis = function() {
   var squareSize = 6;
   var squarePad = 2;
   var numPerRow = width/ (squareSize + squarePad);
-
-// // main svg for viz
-//   var svg=null;
-// // d3 selection that will be used for displaying viz
-//   var g = null;
-
-  // when scrolling to a new section the activation function for that section is called
-  var activateFunctions = [];
-
-  // if a section has an update function then it is called while scrolling through the section with the current progress through the section
-  var updateFunctions = [];
-//
-// var svg = d3.select('.squaresvg').append('svg');
-//     .attr("width", width)
-//     .attr("height", height)
-//     .append("g");
 
 // first diagram
   svg = d3.select('.squaresvg').insert('svg', ':first-child');
@@ -752,40 +727,6 @@ var scrollVis = function() {
     .attr('opacity', 1);
     squares.push(square);
   }
-
-
-// second diagram
-// svg = d3.select('.square2svg').append('svg');
-// svg.attr('width', width).attr('height', height);
-// svg.append('g');
-// g = svg.select('g');
-//
-// var squares = [];
-// for (let i = 0; i < 5070; i += 1) {
-//   var square = g.append('rect').classed('square', true)
-//   .attr('width', squareSize)
-//   .attr('height', squareSize)
-//   // .attr('fill', function() {
-//   //   return i < 1730
-//   //     ? '#CEDED6'
-//   //     : '#214B47';
-//   .attr('fill', function(){
-//     return i > 3120
-//     ? '#00A780'
-//     : i < 1730
-//     ? '#CEDED6'
-//     : '#214B47';
-//   })
-//   // })
-//   .attr('x', function() {
-//     return (i * 8)%600;
-//   })
-//   .attr('y', function() {
-//     return Math.floor((i*8)/600) * 8;
-//   })
-//   .attr('opacity', 1);
-//   squares.push(square);
-// }
 };
 
 
