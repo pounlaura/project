@@ -439,11 +439,11 @@ The maps below show the building emissions data gap. The left map displays where
 
 <div class="maptitle">
     <div>
-      <h5 style= "color: #FF7A2A">Buildings that are subject to LL97
+      <h5>50,000 buildings should be covered...
       </h5>
     </div>
     <div>
-      <h5 style="color: #00A780">Buildings that reported emissions under LL84
+      <h5>only 27,000 have emissions data
       </h5>
     </div>
 </div>
@@ -482,7 +482,9 @@ The maps below show the building emissions data gap. The left map displays where
           <h5 id="barGraphText1">COMPARISON GRAPH HERE</h5>
          </div>
       <div class="col-8">
-        <div class=bar bar-text>
+        <div class=bar>
+          <figcaption style="padding-left: 40px">Source:
+          </figcaption>
         </div>
       </div>
     </div>
@@ -764,12 +766,13 @@ var barGraphSvg = function() {
   // Color is determined just by the index of the bars
   var barColors = { 0: '#00A780', 1: '#214B47'};
 
-nicholas = [["Primary use only", 47.5], ["Top 3 uses",36.2]];
+nicholas = [["primary use only", 47.5], ["top 3 uses",36.2]];
 
 var svg = d3.select('.bar')
-    .append("svg")
+    .append('svg')
     .attr("width", width)
     .attr("height", height);
+// svg.select('.bar').selectAll('svg').insert('svg', ':first-child');
 svg.selectAll("rect")
         .data(nicholas)
         .enter()
@@ -785,7 +788,7 @@ svg.selectAll("rect")
         .append('text')
         .attr('class', 'bar-text')
         .text(function (datum) {
-          return datum[0]+": "+ datum[1]+ " mil. metric tons";
+          return "Calculated with " + datum[0]+": "+ datum[1]+ "%";
         })
         .attr('x', 0)
         .attr('dx', 15)
