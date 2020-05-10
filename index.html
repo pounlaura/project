@@ -135,7 +135,7 @@ figure.sticky {
       position: sticky;
       top:-1px;
       height: 1500px;
-      margin-bottom: 80%;
+      margin-bottom: 20%;
     }
 /* making timeline sticky */
     #timelinediv {
@@ -252,7 +252,6 @@ figure.sticky {
       display: flex;
       margin-left: calc((-100vw + 1140px - 30px)/2);
       width: 100vw;
-      margin-bottom: 100px;
     }
 
     .maptitle > div {
@@ -393,6 +392,7 @@ figure.sticky {
       <!-- diagram 1 -->
 <div class="row">
         <div class="col-4 emissionsTextColumn">
+          <h5>GHG emissions implications</h5>
           <h5 id="emissionsHeadline1">NYC's annual emissions are 50.7 million metric tons.</h5>
           <h5 id="emissionsHeadline2">Buildings are responsible for 70% of NYC's emissions.</h5>
           <h5 id="emissionsHeadline3">Covered buildings under LL84 emitted 19.5 million metric tons in 2018.
@@ -403,7 +403,7 @@ figure.sticky {
         <br><br>
         <!-- <div id="firstvisualdiv"> -->
          <div class="squaresvg">
-           <figcaption style="padding-left: 40px">1 square = 10000 metric tons; Source: NYC GHG Inventory 2017
+           <figcaption style="padding-left: 40px">
            </figcaption>
          </div>
 
@@ -426,8 +426,9 @@ figure.sticky {
         <div class="col-4">
           <br><br>
           <h5>Large gaps in data make it difficult to visualize LL97.</h5>
-          <p> Under LL97's covered buildings qualifications, 50,000 buildings throughout all 5 boroughs should be subject to comply.
-            However, LL84's dataset reveals around half that number--indicating insufficient data.
+          <p> The city currently is missing GHG emissions data for about 40% of the covered buildings. We have estimated approximately 50,000 buildings will be covered by LL97.(source: Urban Green Council) However, we only have data from about 27,000 buildings.
+          <br>
+The maps below show the building emissions data gap. The left map displays where the ~50,000 covered buildings are. The orange buildings are the buildings with no data. The right map displays the ~27,000 private covered buildings with data. Slide to see the significant data gap for building greenhouse gas emissions.
 
           </p>
 
@@ -464,7 +465,7 @@ figure.sticky {
 </div>
 
 <!-- map source -->
-<div class="maptitle">
+<div class="maptitle" style="margin-bottom: 100px">
     <div>
       <figcaption>Source: PLUTO
       </figcaption>
@@ -481,7 +482,7 @@ figure.sticky {
           <h5 id="barGraphText1">COMPARISON GRAPH HERE</h5>
          </div>
       <div class="col-8">
-        <div class=bar>
+        <div class=bar bar-text>
         </div>
       </div>
     </div>
@@ -491,201 +492,11 @@ figure.sticky {
 
 <script type="text/javascript">
 
-var controller = new ScrollMagic.Controller();
+var allEmissionsColor = '#CEDED6';
+var buildingEmissionsColor = '#214B47';
+var coveredEmissionsColor = '#00A780';
 
-      new ScrollMagic.Scene({triggerElement: "#trigger1",
-                            triggerHook: 0.9,
-                            duration: "58%",
-                            offset: 50
-                              })
-          .setClassToggle("#reveal1", "visible")
-          .addTo(controller);
-
-
-      // firstsection paragraph 1
-      new ScrollMagic.Scene({triggerElement: "#trigger2",
-                            triggerHook: "onleave",
-                            duration: "58%",
-                            offset: 50
-                              })
-          .setClassToggle("#firstsection1", "visible")
-          .addTo(controller);
-
-//highlight text
-          new ScrollMagic.Scene({
-            triggerElement: "#firstsection2",
-            duration: "30%",
-          })
-              .setClassToggle("#timeline1", "active1")
-              .addTo(controller);
-
-          new ScrollMagic.Scene({triggerElement: "#firstsection3"})
-              .setClassToggle("#timeline2", "active2")
-              .addTo(controller);
-
-      // firstsection paragraph 2
-      new ScrollMagic.Scene({triggerElement: "#trigger2",
-                            triggerHook: "onleave",
-                            duration: "30%",
-                            offset: 500
-                              })
-          .setClassToggle("#firstsection2", "visible")
-          .addTo(controller);
-
-          // scene for paragraph 3
-      new ScrollMagic.Scene({triggerElement: "#trigger2",
-                            triggerHook: "onleave",
-                            duration: "58%",
-                            offset: 800
-                              })
-          .setClassToggle("#firstsection3", "visible")
-          .addTo(controller);
-          // scene for timeline
-      new ScrollMagic.Scene({triggerElement: "#trigger3",
-                            triggerHook: "onleave",
-                            duration: 0,
-                            offset: 50
-                              })
-          .setClassToggle("#timelinediv", "visible")
-          .addTo(controller);
-          // scene for diagram texts
-      new ScrollMagic.Scene({
-        triggerElement: "#emissionsHeadline1",
-        triggerHook: "onCenter",
-        duration: "10%",
-      })
-      .setClassToggle("#emissionsHeadline1", "sticky")
-      .addTo(controller);
-
-//scene for diagram 1
-      new ScrollMagic.Scene({
-        triggerElement: "emissionsHeadline1",
-        triggerHook: "onEnter",
-        duration: 0,
-      })
-      .addTo(controller)
-      .on('enter', squaresFill);
-// scene for diagram 2
-      new ScrollMagic.Scene({
-        triggerElement: "#emissionsHeadline2",
-        triggerHook: "onEnter",
-        duration: 0,
-      })
-      .addTo(controller)
-      .on('enter', squaresBuildings);
-// scene for diagram 3
-      new ScrollMagic.Scene({
-        triggerElement: "#emissionsHeadline3",
-        triggerHook: "onEnter",
-        duration: 0,
-      })
-      .addTo(controller)
-      .on('enter', squaresTransition);
-// scene for diagram 4
-      new ScrollMagic.Scene({
-        triggerElement: "#emissionsHeadline4",
-        triggerHook: "onEnter",
-        duration: 0,
-      })
-      .addTo(controller)
-      .on('enter', squaresMove);
-// bar graph appear
-      new ScrollMagic.Scene({
-        triggerElement: "#barGraphText1",
-        triggerHook: "onEnter",
-        duration: 0,
-      })
-      .addTo(controller)
-      .on('enter', barShow);
-
-//diagram 1
-      function squaresFill(){
-        var squares = d3.select('.squaresvg').selectAll('rect')
-        .attr('fill', "#CEDED6")
-        // .attr('fill', function(datum, index, nodes) {
-        //   return index < 5071
-        //   ? 'CEDED6'
-        //   : d3.select(nodes[index]).attr('fill');
-        // })
-      }
-// diagram 2
-      function squaresBuildings() {
-        var squares = d3.select('.squaresvg').selectAll('rect')
-          .transition()
-          .duration(1000)
-          .attrTween('fill', function(datum, index, nodes){
-            return
-            index < 1730
-              ? '#CEDED6'
-              : '#214B47';
-          })
-      }
-// diagram 3
-      function squaresTransition() {
-        var squares = d3.select('.squaresvg').selectAll('rect')
-          .attr('fill', function(datum, index, nodes) {
-            return index > 3120
-            ? '#00A780'
-            : d3.select(nodes[index]).attr('fill');
-          })
-         d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: Energy and Water Disclosure Data for Local Law 84 (2019)</span>");
-      }
-// diagram 4
-      function squaresMove () {
-        var squaresvg = d3.select('.squaresvg');
-        var stayEmissions = squaresvg.select('.stayEmissions');
-        var reducedEmissions = squaresvg.select('.reducedEmissions');
-
-        stayEmissions.transition()
-        .duration(1000)
-        .attrTween("transform", function(){
-          return function(t) {
-            return "scale("+ (1 - t*.1) +")";
-          }
-        });
-
-        reducedEmissions.transition()
-        .duration(1000)
-        .attrTween("transform", function(){
-          return function(t) {
-            return `
-            translate(0, ${t*15})
-            scale(${1 - t*.1})
-            `;
-          }
-        });
-        d3.select('.reducedEmissions').selectAll('rect')
-        .transition()
-        .duration(1000)
-        .attrTween("x", function(datum, index){
-          return function(t){
-            const originalPosition = (index * 8)%600;
-            const finalPosition = (index *8)%304;
-            return originalPosition - t*(originalPosition-finalPosition);
-        }})
-        .attrTween("y", function(datum, index){
-          return function(t){
-            var originalPosition = Math.floor(((index + 4541)*8)/600) * 8;
-            var finalPosition = ((4541*8)/600*8) + (Math.floor(index / 38) * 8);
-            return originalPosition - t*(originalPosition - finalPosition);
-          }
-        });
-
-        d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: Urban Green Council, Local Law 97</span>");
-      }
-
-      // save for later
-      // function translateAlong(path) {
-      //   var l = path.getTotalLength();
-      //   return function(d, i, a) {
-      //     return function(t) {
-      //       var p = path.getPointAtLength(t * l);
-      //       return "translate(" + p.x + "," + p.y + ")";
-      //     };
-      //   };
-      // }
-
-var scrollVis = function() {
+function scrollVis() {
   var width = 600;
   var height = 550;
   var margin = {top:0, left:20, bottom: 0, right:10};
@@ -693,12 +504,12 @@ var scrollVis = function() {
   var lastIndex = -1;
   var activeIndex = 0;
 
-// sizing for grid viz
+  // sizing for grid viz
   var squareSize = 6;
   var squarePad = 2;
   var numPerRow = width/ (squareSize + squarePad);
 
-// second diagram
+  // create groups to move later
   svg = d3.select('.squaresvg').insert('svg', ':first-child');
   svg.attr('width', width).attr('height', height);
   var stayEmissions = svg.append('g');
@@ -708,37 +519,20 @@ var scrollVis = function() {
 
   var squares = [];
 
-  // for (let i = 0; i<5071; i+=1){
-  //  var square = allEmissions.append('rect').classed('square', true)
-  //  .attr('width', squareSize)
-  //  .attr('height', squareSize)
-  //  .attr('fill', '#CEDED6')
-  //  .attr('x', function() {
-  //    return (i * 8)%600;
-  //  })
-  //  .attr('y', function() {
-  //    return Math.floor((i*8)/600) * 8;
-  //  })
-  //  .attr('opacity', 1);
-  //  squares.push(square);
-  // }
-  //building emissions
+  // building emissions
   for (let i = 0; i < 4541; i += 1) {
     var square = stayEmissions.append('rect').classed('square', true)
     .attr('width', squareSize)
     .attr('height', squareSize)
-    .attr('fill', function() {
-      return i < 1730
-        ? '#CEDED6'
-        : '#214B47';
-    })
+    .style('fill', allEmissionsColor)
     .attr('x', function() {
       return (i * 8)%600;
     })
     .attr('y', function() {
       return Math.floor((i*8)/600) * 8;
     })
-    .attr('opacity', 1);
+    .style('opacity', 0);
+
     squares.push(square);
   }
 
@@ -746,22 +540,216 @@ var scrollVis = function() {
     var square = reducedEmissions.append('rect').classed('square', true)
     .attr('width', squareSize)
     .attr('height', squareSize)
-    .attr('fill', function() {
-      return i < 1730
-        ? '#CEDED6'
-        : '#214B47';
-    })
     .attr('x', function() {
       return (i * 8)%600;
     })
     .attr('y', function() {
       return Math.floor((i*8)/600) * 8;
     })
-    .attr('opacity', 1);
+    .style('opacity', 0)
+    .style('fill', allEmissionsColor);
+
     squares.push(square);
   }
 };
+
+/* SCROLLMAGIC SCENE FUNCTIONS */
+//diagram 1
+function squaresFill() {
+  var squares = d3.select('.squaresvg').selectAll('rect')
+    .transition()
+    .duration(100)
+    .delay(function(d, i) { return (i%(600/8) + i/4)*.25})
+    .style('opacity', 1);
+}
+
+// diagram 2
+function squaresBuildings() {
+  var squares = d3.select('.squaresvg').selectAll('rect')
+    .transition()
+    .duration(100)
+    .style('fill', function(datum, index, nodes){
+      return index < 1730
+        ? allEmissionsColor
+        : buildingEmissionsColor;
+    })
+    d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: NYC GHG Inventory 2017</span>")
+}
+
+// diagram 3
+function squaresTransition() {
+  var squares = d3.select('.squaresvg').selectAll('rect')
+    .transition()
+    .duration(100)
+    .style('fill', function(datum, index, nodes) {
+      return index > 3120
+      ? coveredEmissionsColor
+      : d3.select(nodes[index]).style('fill');
+    })
+   d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: Energy and Water Disclosure Data for Local Law 84 (2019)</span>");
+}
+
+// diagram 4
+function squaresMove () {
+  var squaresvg = d3.select('.squaresvg');
+  var stayEmissions = squaresvg.select('.stayEmissions');
+  var reducedEmissions = squaresvg.select('.reducedEmissions');
+
+  stayEmissions.transition()
+  .duration(1000)
+  .attrTween("transform", function(){
+    return function(t) {
+      return "scale("+ (1 - t*.1) +")";
+    }
+  });
+
+  reducedEmissions.transition()
+  .duration(1000)
+  .attrTween("transform", function(){
+    return function(t) {
+      return `
+      translate(0, ${t*15})
+      scale(${1 - t*.1})
+      `;
+    }
+  });
+
+  d3.select('.reducedEmissions').selectAll('rect')
+  .transition()
+  .duration(1001)
+  .attrTween("x", function(datum, index){
+    return function(t){
+      const originalPosition = (index * 8)%600;
+      const finalPosition = (index *8)%304;
+      return originalPosition - t*(originalPosition-finalPosition);
+  }})
+  .attrTween("y", function(datum, index){
+    return function(t){
+      var originalPosition = Math.floor(((index + 4541)*8)/600) * 8;
+      var finalPosition = ((4541*8)/600*8) + (Math.floor(index / 38) * 8);
+      return originalPosition - t*(originalPosition - finalPosition);
+    }
+  });
+
+  d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: Urban Green Council, Local Law 97</span>");
+}
+
+var controller = new ScrollMagic.Controller();
+
+new ScrollMagic.Scene({triggerElement: "#trigger1",
+  triggerHook: 0.9,
+  duration: "58%",
+  offset: 50
+})
+.setClassToggle("#reveal1", "visible")
+.addTo(controller);
+
+
+// firstsection paragraph 1
+new ScrollMagic.Scene({triggerElement: "#trigger2",
+  triggerHook: "onleave",
+  duration: "58%",
+  offset: 50
+})
+.setClassToggle("#firstsection1", "visible")
+.addTo(controller);
+
+//highlight text
+new ScrollMagic.Scene({
+  triggerElement: "#firstsection2",
+  duration: "30%",
+})
+.setClassToggle("#timeline1", "active1")
+.addTo(controller);
+
+new ScrollMagic.Scene({triggerElement: "#firstsection3"})
+.setClassToggle("#timeline2", "active2")
+.addTo(controller);
+
+// firstsection paragraph 2
+new ScrollMagic.Scene({triggerElement: "#trigger2",
+  triggerHook: "onleave",
+  duration: "30%",
+  offset: 500
+})
+.setClassToggle("#firstsection2", "visible")
+.addTo(controller);
+
+// scene for paragraph 3
+new ScrollMagic.Scene({triggerElement: "#trigger2",
+  triggerHook: "onleave",
+  duration: "58%",
+  offset: 800
+})
+.setClassToggle("#firstsection3", "visible")
+.addTo(controller);
+
+// scene for timeline
+new ScrollMagic.Scene({triggerElement: "#trigger3",
+  triggerHook: "onleave",
+  duration: 0,
+  offset: 50
+})
+.setClassToggle("#timelinediv", "visible")
+.addTo(controller);
+
+// scene for diagram texts
+new ScrollMagic.Scene({
+  triggerElement: "#emissionsHeadline1",
+  triggerHook: "onCenter",
+  duration: "10%",
+})
+.setClassToggle("#emissionsHeadline1", "sticky")
+.addTo(controller);
+
+//scene for diagram 1
+new ScrollMagic.Scene({
+  triggerElement: "#emissionsHeadline1",
+  triggerHook: "onEnter",
+  duration: 0,
+})
+.addTo(controller)
+.on('enter', squaresFill);
+
+// scene for diagram 2
+new ScrollMagic.Scene({
+  triggerElement: "#emissionsHeadline2",
+  triggerHook: "onEnter",
+  duration: 0,
+})
+.addTo(controller)
+.on('enter', squaresBuildings);
+
+// scene for diagram 3
+new ScrollMagic.Scene({
+  triggerElement: "#emissionsHeadline3",
+  triggerHook: "onEnter",
+  duration: 0,
+})
+.addTo(controller)
+.on('enter', squaresTransition);
+
+// scene for diagram 4
+new ScrollMagic.Scene({
+  triggerElement: "#emissionsHeadline4",
+  triggerHook: "onEnter",
+  duration: 0,
+})
+.addTo(controller)
+.on('enter', squaresMove);
+
+//scene for bar graph
+
+new ScrollMagic.Scene({
+  triggerElement: "#barGraphText1",
+  triggerHook: "onEnter",
+  duration: 0,
+})
+.addTo(controller)
+.on('enter', barShow);
+
 scrollVis();
+
 
 var barGraphSvg = function() {
   var width = 600;
@@ -774,9 +762,9 @@ var barGraphSvg = function() {
     .range([0, height - 50], 0.1, 0.1);
 
   // Color is determined just by the index of the bars
-  var barColors = { 0: '#00A780', 1: '#FF7A2A'};
+  var barColors = { 0: '#00A780', 1: '#214B47'};
 
-nicholas = [["Primary Use", 47.5], ["Top Three Uses",36.2]];
+nicholas = [["Primary use only", 47.5], ["Top 3 uses",36.2]];
 
 var svg = d3.select('.bar')
     .append("svg")
@@ -791,7 +779,25 @@ svg.selectAll("rect")
         .attr('fill', function (datum, index) { return barColors[index]; })
         .attr('width', 0)
         .attr('height', yBarScale.bandwidth());
+  svg.selectAll("svg")
+        .data(nicholas)
+        .enter()
+        .append('text')
+        .attr('class', 'bar-text')
+        .text(function (datum) {
+          return datum[0]+": "+ datum[1]+ " mil. metric tons";
+        })
+        .attr('x', 0)
+        .attr('dx', 15)
+        .attr('y', function (datum, index) { return yBarScale(index);})
+        .attr('dy', yBarScale.bandwidth() / 1.2)
+        .style('font-size', '18px')
+        .attr('fill', 'white')
+        .attr('opacity', 0);
 };
+
+barGraphSvg();
+
 function barShow() {
   var xBarScale = d3.scaleLinear()
    .domain([0,50])
@@ -802,8 +808,14 @@ function barShow() {
     .attr('width', function(datum, index){
       return xBarScale(datum[1]);
     });
+  var barText = d3.selectAll('text')
+    .transition()
+    .duration(600)
+    .delay(1200)
+    .attr('opacity',1);
 }
-barGraphSvg();
+
+
 
 
 
