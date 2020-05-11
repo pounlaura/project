@@ -139,7 +139,7 @@ main h4.section-header {
     }
 
 /* making firstvisualdiv and secondvisualdiv sticky */
-    #firstvisualdiv, #secondvisualdiv {
+    #firstvisualdiv, #secondvisualdiv, #thirdvisualdiv {
         position: -webkit-sticky;
         position: sticky;
         top: -1px;
@@ -150,18 +150,18 @@ main h4.section-header {
       justify-content: space-around;
       height: 3000px;
     }
-    .bldgnumTextColumn{
+    .bldgnumTextColumn, .barGraphTextColumn{
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       height: 2000px;
     }
-    .emissionsTextColumn h5.sticky, .bldgnumTextColumn h5.sticky {
+    .emissionsTextColumn h5.sticky, .bldgnumTextColumn h5.sticky, .barGraphTextColumn h5.sticky {
       position: sticky;
       top: 50%;
       transform: translateY(-50%);
     }
-    .squaresvg, .bldgsNum {
+    .squaresvg, .bldgsNum, .bar {
       position: sticky;
       top: 50%;
       transform: translateY(-50%);
@@ -335,7 +335,7 @@ main h4.section-header {
             <!-- <div class= -->
             <h5>#GreenNewDeal4NY</h5>
             <p>
-              TALK ABOUT THE CLIMATE MOBILIZATION ACT HERE
+              The Climate Mobilization Act aims to reduce greenhouse gas(GHG) emissions by 40% by 2030, working towards a goal of 80% reduction by 2050. This “Green New Deal” will take effect in 2024 and target large NYC buildings, as stipulated in Local Law 97. Local Law 94, 97 and 93 all work together to make the Green New Deal a reality. Owners must therefore start planning now to be able to comply with the laws by retrofitting more efficient HVAC systems, lighting systems, etc. and potentially looking into operational control measures to optimize energy use in their property. 
               <br>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
@@ -480,14 +480,17 @@ main h4.section-header {
   </div>
 </div>
 <div class="row">
-        <div class="col-4">
+        <div class="col-4 barGraphTextColumn" >
           <br><br>
+          <div>
           <h5>There is no clear way to determine the emissions limit for each building.</h5>
+          <p>Even with the existing building emissions data, LL97 and LL84 speak different languages, making it complicated to calculate...TK</p>
+        </div>
           <h5 id="barGraphText1">A typical mixed-use building in NYC is complicated.</h5>
          </div>
-      <div class="col-8">
+      <div class="col-8" id="thirdvisualdiv">
         <div class=bar>
-          <figcaption style="padding-left: 40px">Source: XYZ
+          <figcaption style="padding-left: 40px">
           </figcaption>
         </div>
       </div>
@@ -768,6 +771,7 @@ function barShow() {
     .duration(600)
     .delay(1200)
     .attr('opacity',1);
+  d3.select('figcaption').html("<span>Source: XYZ</span>");
 }
 
 // Scrollmagic controller and scenes
