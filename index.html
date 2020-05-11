@@ -457,14 +457,6 @@ main h4.section-header {
 </div>
 
 <div class="row">
-  <div class="col-4">
-    <h5>With the data we have now, the estimated impact in emission reduction is 6.2 mil. metric tons by 2024.</h5>
-    <h5>That's almost 1 mil. metric tons ahead of the minimum goal for 2030.</h5>
-  </div>
-  <div class="col-8">
-  </div>
-</div>
-<div class="row">
         <div class="col-4 barGraphTextColumn" >
           <br><br>
           <div>
@@ -478,6 +470,15 @@ main h4.section-header {
           <figcaption style="padding-left: 40px">
           </figcaption>
         </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <h5>With the data we have now, the estimated impact in emission reduction is 6.2 mil. metric tons by 2024.</h5>
+        <h5>That's almost 1 mil. metric tons ahead of the minimum goal for 2030.</h5>
+      </div>
+      <div class="col-8">
       </div>
     </div>
 
@@ -642,7 +643,7 @@ var bldgNumSvg = function(){
     .range([height,0]);
   var barColors = {0: '#FF7A2A', 1: '#00A780'};
 
-  buildings = [["Supposed Data", 50000],["LL84 Data", 27000]]
+  buildings = [["Covered Buildings", 50000],["Buildings with Data", 27000]]
 
   var svg = d3.select('.bldgsNum').insert('svg', ':first-child')
     .attr("width", width)
@@ -668,7 +669,7 @@ var bldgNumSvg = function(){
       .append('text')
       .attr('class', 'bar-text')
       .text(function (datum) {
-        return datum[0]+ datum[1];
+        return datum[1]+ " " + datum[0];
       })
       .attr('x', function (datum, index) { return xBarScale(index);})
       .attr('dx', (xBarScale.bandwidth()-20)/5)
