@@ -810,11 +810,12 @@ var barGraphSvg = function() {
     .style('font-size', '18px')
     .attr('fill', 'white')
     .attr('opacity', 0);
+
   svg.selectAll('svg')
       .enter()
       .append('text')
       .attr('x', 5)
-      .attr('y', 15)
+      .attr('y', 182)
       .attr('text-anchor', 'center')
       .style('color', '#214B47')
       .text("% Emissions Reduction Required by 2024");
