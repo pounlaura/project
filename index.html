@@ -154,7 +154,13 @@ main h4.section-header {
       justify-content: space-around;
       height: 3000px;
     }
-    .bldgnumTextColumn, .barGraphTextColumn{
+    .bldgnumTextColumn{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 2000px;
+    }
+    .barGraphTextColumn{
       display: flex;
       flex-direction: column;
       justify-content: space-around;
@@ -320,8 +326,7 @@ main h4.section-header {
         <div id ="trigger1" class="spacer s0"></div>
         <div class="col-4 hidden" id="reveal1">
           <h5>
-            NYC has charted a path to reducing its greenhouse gas(GHG) emissions by 80% by 2050.
-          </h5>
+            To tackle climate change, NYC has charted a path to reducing its greenhouse gas emissions by 80% by 2050.  </h5>
           <!-- <h5>
             What does the path look like?
           </h5> -->
@@ -356,6 +361,8 @@ main h4.section-header {
           </div>
 
         </div>
+
+        <!-- timeline -->
         <div class="col-8 timelineSticky">
           <div id ="trigger3" class="spacer s0"></div>
           <div id="timelinediv" class="hidden" style="border-left: 5px solid #CEDED6; padding: 30px">
@@ -379,7 +386,7 @@ main h4.section-header {
         <div class="col-4 emissionsTextColumn">
           <h5>We wanted to understand: what is the pathway to achieving LL97's goals?</h5>
           <h5>GHG Emissions by the Numbers</h5>
-          <h5 id="emissionsHeadline1">NYC's annual emissions are 50.7 million metric tons.</h5>
+          <h5 id="emissionsHeadline1">NYC's annual emissions are 50.7 million metric tons of CO2 equivalent (MMTCO2e).</h5>
           <h5 id="emissionsHeadline2">Buildings are responsible for 70% of those emissions.</h5>
           <h5 id="emissionsHeadline3">Covered buildings under LL84 emitted 19.5 million metric tons in 2018.
           <p class="caveat">*estimated emissions from 25,164 covered buildings</p></h5>
@@ -401,11 +408,12 @@ main h4.section-header {
 <!-- map intro -->
 <div class="row">
         <div class="col-4 bldgnumTextColumn">
-          <h5>Is NYC on track to reduce emissions by 40% by 2030? We dove into the data to understand how much work needs to be done.
+          <h5>Is NYC on track to reduce emissions by 40% by 2030?
+            <br><br>We delved into the data to understand how much work needs to be done.
           </h5>
           <div id="bldgsNumText">
             <h5>Large gaps in available data make it difficult to answer that question.</h5>
-            <p> The city currently is missing GHG emissions data for about 40% of the covered buildings. About 50,000 buildings will be covered by LL97(source: NYC Office of Sustainability; Urban Green Council). However, we only have data from about 27,000 buildings.
+            <p> The city currently is missing GHG emissions data for about 40% of the covered buildings. About 50,000 buildings will be covered by LL97 (source: NYC Office of Sustainability). However, we only have data from about 27,000 buildings.
             <br><br>
   The maps below visualize the building emissions data gap. The left map displays the ~50,000 covered buildings. The orange buildings are the buildings with no data (buildings that have not reported emissions under LL84). The right map displays the ~27,000 private covered buildings with data. Slide to see the significant data gap for building greenhouse gas emissions.
             </p>
@@ -457,31 +465,59 @@ main h4.section-header {
 </div>
 
 <div class="row">
+  <div class="col-12">
+        <h5>Even with data, there is no clear way to determine the emissions limit for each building.</h5>
+        <p>Currently, the existing building emissions data do not provide a way to determine the exact emissions limit for each building. </p>
+        <p>LL97 establishes building emissions limits by building occupancy group. However, the existing LL84 disclosure dataset does not include the building’s occupancy group. Furthermore, there currently is no existing method to match a building to its occupancy groups.</p>
+        <p>Determining a building’s occupancy group is complicated by the fact that many buildings have multiple uses - residential, commercial, medical, educational, institutional, and more. How the occupancy group is determined affects the emissions limit for a building.</p>
+  </div>
+</div>
+
+<!-- zooming in on one mixed use building -->
+<div class="row">
         <div class="col-4 barGraphTextColumn" >
-          <br><br>
-          <div>
-          <h5>There is no clear way to determine the emissions limit for each building.</h5>
-          <p>Even with the existing building emissions data, LL97 and LL84 speak different languages, making it complicated to calculate...TK</p>
-        </div>
+          <!-- <br><br> -->
           <h5 id="barGraphText1">A typical mixed-use building in NYC is complicated.</h5>
+          <div>
+          <h5>1390 Saint Nicholas Ave. in Manhattan </h5>
+          <p>three uses</p>
+        </div>
+          <img src="1390-nicholas-street.jpg"  width="300" height="200">
+
          </div>
-      <div class="col-8" id="thirdvisualdiv">
+      <div class="col-8 " id="thirdvisualdiv">
         <div class=bar>
-          <figcaption style="padding-left: 40px">
+          <figcaption style="padding-left: 40px">Source:
           </figcaption>
         </div>
       </div>
     </div>
 
+
+    <div class="row">
+      <div class="col-12">
+        <h5>How far towards the goal does the existing data take us?</h5>
+        <p>Despite having limited data, we still wanted to see how far towards the 40% by 2030 goal the existing data could take us. We cleaned the data to only include private buildings with reported emissions greater than zero. Then we self-assigned buildings an occupancy group based on the self-reported primary use. (See methodology section for full explanation). </p>
+        <p>This resulted in 19,697 properties (for a total of 24,392 buildings) with what we considered “usable” data. Of these, 4,266 properties (6,219 buildings) are non-compliant for the 2024 limit, meaning 25% of buildings require energy retrofits and improvements to meet the 2024 limit. If all of these buildings fully complied to reduce their emissions to the 2024 level, the aggregate emissions reduction would be 6,249,605 MTCO2e.</p>
+      </div>
+    </div>
     <div class="row">
       <div class="col-4">
-        <h5>With the data we have now, the estimated impact in emission reduction is 6.2 mil. metric tons by 2024.</h5>
+        <h5>With the data we have now, the estimated impact in emission reduction is 6.2 MMTCO2e by 2024.</h5>
         <h5>That's almost 1 mil. metric tons ahead of the minimum goal for 2030.</h5>
       </div>
       <div class="col-8">
+          //insert 4th iteration of box visual
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-12">
+        <h5>Conclusions</h5>
+        <p>If NYC wants to be able to implement LL97, there are serious data questions and limitations that must be addressed. And these issues must be ironed out soon because the first emissions limit goes into effect in less than four years.Significant time and effort is required to retrofit buildings and in order for these improvements to be made, building owners first need certainty about whether they are covered by the law and second, what their emission limits are. Without this information, building owners will not be able to take the appropriate measures to comply with the law. Furthermore, without a clear understanding of the covered buildings and respective emissions limits, officials will not be able to enforce the law to ensure that building owners reduce emissions. Without robust monitoring and enforcement, there may be little actual reduction in emissions limits.</p>
+        <p>On a positive note, our analysis suggests that the LL97 can achieve more than its stated goal to reduce building emissions at a faster and greater rate than planned.</p>
+      </div>
+    </div>
   </main><!-- /.container -->
 
 
@@ -550,38 +586,73 @@ function scrollVis() {
 
 /* SCROLLMAGIC SCENE FUNCTIONS */
 //diagram 1
-function squaresFill() {
-  var squares = d3.select('.squaresvg').selectAll('rect')
-    .transition()
-    .duration(100)
-    .delay(function(d, i) { return (i%(600/8) + i/4)*.25})
-    .style('opacity', 1);
+function squaresFill(event) {
+  if (event.scrollDirection === 'FORWARD'){
+    var squares = d3.select('.squaresvg').selectAll('rect')
+      .transition()
+      .duration(100)
+      .delay(function(d, i) { return (i%(600/8) + i/4)*.25})
+      .style('opacity', 1);
+  }
+  if (event.scrollDirection === 'REVERSE'){
+    var squares = d3.select('.squaresvg').selectAll('rect')
+      .transition()
+      .duration(100)
+      .delay(function(d, i) {
+        var reverseIndex = 5070-i;
+        return (reverseIndex%(600/8) + reverseIndex/4)*.25})
+      .style('opacity', 0);
+  }
 }
 
 // diagram 2
-function squaresBuildings() {
-  var squares = d3.select('.squaresvg').selectAll('rect')
-    .transition()
-    .duration(100)
-    .style('fill', function(datum, index, nodes){
-      return index < 1730
-        ? allEmissionsColor
-        : buildingEmissionsColor;
-    })
-    d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: NYC GHG Inventory 2017</span>")
+function squaresBuildings(event) {
+  if (event.scrollDirection === 'FORWARD'){
+    d3.select('.squaresvg').selectAll('rect')
+      .transition()
+      .duration(100)
+      .style('fill', function(datum, index, nodes){
+        return index < 1730
+          ? allEmissionsColor
+          : buildingEmissionsColor;
+      })
+    d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: NYC GHG Inventory 2017</span>");
+  }
+  if (event.scrollDirection === 'REVERSE') {
+      console.log('reverse squaresBuildings');
+      d3.select('.squaresvg').selectAll('rect')
+        .transition()
+        .duration(100)
+        .style('fill', function(datum, index, nodes) {
+          return allEmissionsColor;
+        });
+    }
 }
 
 // diagram 3
-function squaresTransition() {
-  var squares = d3.select('.squaresvg').selectAll('rect')
-    .transition()
-    .duration(100)
-    .style('fill', function(datum, index, nodes) {
-      return index > 3120
-      ? coveredEmissionsColor
-      : d3.select(nodes[index]).style('fill');
-    })
+function squaresTransition(event) {
+  if (event.scrollDirection === 'FORWARD') {
+    var squares = d3.select('.squaresvg').selectAll('rect')
+      .transition()
+      .duration(100)
+      .style('fill', function(datum, index, nodes) {
+        return index > 3120
+        ? coveredEmissionsColor
+        : d3.select(nodes[index]).style('fill');
+      });
    d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: Energy and Water Disclosure Data for Local Law 84 (2019)</span>");
+  }
+  if (event.scrollDirection === 'REVERSE') {
+    d3.select('.squaresvg').selectAll('rect')
+      .transition()
+      .duration(100)
+      .style('fill', function(datum, index, nodes){
+        return index < 1730
+          ? allEmissionsColor
+          : buildingEmissionsColor;
+      });
+    d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: NYC GHG Inventory 2017(2019)</span>");
+  }
 }
 
 // diagram 4
@@ -740,6 +811,14 @@ var barGraphSvg = function() {
     .style('font-size', '18px')
     .attr('fill', 'white')
     .attr('opacity', 0);
+  svg.selectAll('svg')
+      .enter()
+      .append('text')
+      .attr('x', 5)
+      .attr('y', 15)
+      .attr('text-anchor', 'center')
+      .style('color', '#214B47')
+      .text("% Emissions Reduction Required by 2024");
 };
 
 function barShow() {
@@ -757,7 +836,6 @@ function barShow() {
     .duration(600)
     .delay(1200)
     .attr('opacity',1);
-  d3.select('figcaption').html("<span>Source: XYZ</span>");
 }
 
 // Scrollmagic controller and scenes
@@ -833,7 +911,7 @@ new ScrollMagic.Scene({
 new ScrollMagic.Scene({
   triggerElement: "#emissionsHeadline1",
   triggerHook: "onEnter",
-  duration: 0,
+  duration: 1,
 })
 .addTo(controller)
 .on('enter', squaresFill);
@@ -842,7 +920,7 @@ new ScrollMagic.Scene({
 new ScrollMagic.Scene({
   triggerElement: "#emissionsHeadline2",
   triggerHook: "onEnter",
-  duration: 0,
+  duration: 1,
 })
 .addTo(controller)
 .on('enter', squaresBuildings);
@@ -851,7 +929,7 @@ new ScrollMagic.Scene({
 new ScrollMagic.Scene({
   triggerElement: "#emissionsHeadline3",
   triggerHook: "onEnter",
-  duration: 0,
+  duration: 1,
 })
 .addTo(controller)
 .on('enter', squaresTransition);
@@ -860,7 +938,7 @@ new ScrollMagic.Scene({
 new ScrollMagic.Scene({
   triggerElement: "#emissionsHeadline4",
   triggerHook: "onEnter",
-  duration: 0,
+  duration: 1,
 })
 .addTo(controller)
 .on('enter', squaresMove);
