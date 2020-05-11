@@ -122,14 +122,7 @@ main h4.section-header {
     margin-bottom: 2rem;
     margin-top: 4rem;
 }
-article {
-  position: relative;
-}
-figure.sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-}
+
 /* making timeline container sticky */
     .timelineSticky {
       position: -webkit-sticky;
@@ -157,16 +150,23 @@ figure.sticky {
       justify-content: space-around;
       height: 3000px;
     }
-    .emissionsTextColumn h5.sticky {
+    .bldgnumTextColumn{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 2000px;
+    }
+    .emissionsTextColumn h5.sticky, .bldgnumTextColumn h5.sticky {
       position: sticky;
       top: 50%;
       transform: translateY(-50%);
     }
-    .squaresvg {
+    .squaresvg, .bldgsNum {
       position: sticky;
       top: 50%;
       transform: translateY(-50%);
     }
+
 
 /* hide and reveal scrolly css */
         .hidden {
@@ -413,28 +413,20 @@ figure.sticky {
         </div>
         <br>
 </div>
-<!-- transition -->
-<div class="row">
-  <div class="col-4">
-    <h5>How much GHG emissions does each covered building have to reduce to meet LL97 goals?
-    </h5>
-  </div>
-  <div class="col-8">
-  </div>
-</div>
 <!-- map intro -->
 <div class="row">
-        <div class="col-4">
-          <br><br>
-          <h5 id="bldgsNumText">Large gaps in data make it difficult to visualize LL97.</h5>
-          <p> The city currently is missing GHG emissions data for about 40% of the covered buildings. We have estimated approximately 50,000 buildings will be covered by LL97.(source: Urban Green Council) However, we only have data from about 27,000 buildings.
-          <br>
-The maps below show the building emissions data gap. The left map displays where the ~50,000 covered buildings are. The orange buildings are the buildings with no data. The right map displays the ~27,000 private covered buildings with data. Slide to see the significant data gap for building greenhouse gas emissions.
-
-          </p>
-
+        <div class="col-4 bldgnumTextColumn">
+          <h5>How much GHG emissions does each covered building have to reduce to meet LL97 goals?
+          </h5>
+          <div id="bldgsNumText">
+            <h5>Large gaps in available data make it difficult to answer that question.</h5>
+            <p> The city currently is missing GHG emissions data for about 40% of the covered buildings. About 50,000 buildings will be covered by LL97(source: NYC Office of Sustainability; Urban Green Council). However, we only have data from about 27,000 buildings.
+            <br>
+  The maps below visualize the building emissions data gap. The left map displays the ~50,000 covered buildings. The orange buildings are the buildings with no data (buildings that have not reported emissions under LL84). The right map displays the ~27,000 private covered buildings with data. Slide to see the significant data gap for building greenhouse gas emissions.
+            </p>
+        </div>
          </div>
-      <div class="col-8">
+      <div class="col-8" id="secondvisualdiv">
         <div class=bldgsNum>
         </div>
       </div>
@@ -480,9 +472,18 @@ The maps below show the building emissions data gap. The left map displays where
 </div>
 
 <div class="row">
+  <div class="col-4">
+    <h5>With the data we have now, the estimated impact in emission reduction is 6.2 mil. metric tons by 2024.</h5>
+    <h5>That's almost 1 mil. metric tons ahead of the minimum goal for 2030.</h5>
+  </div>
+  <div class="col-8">
+  </div>
+</div>
+<div class="row">
         <div class="col-4">
           <br><br>
-          <h5 id="barGraphText1">COMPARISON GRAPH HERE</h5>
+          <h5>There is no clear way to determine the emissions limit for each building.</h5>
+          <h5 id="barGraphText1">A typical mixed-use building in NYC is complicated.</h5>
          </div>
       <div class="col-8">
         <div class=bar>
