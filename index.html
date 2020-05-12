@@ -139,7 +139,7 @@ main h4.section-header {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      height: 750px;
+      height: 600px;
     }
 
 /* making firstvisualdiv and secondvisualdiv sticky */
@@ -152,7 +152,7 @@ main h4.section-header {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      height: 3000px;
+      height: 2000px;
     }
     .bldgnumTextColumn{
       display: flex;
@@ -241,7 +241,7 @@ main h4.section-header {
     }
 /* style for row */
     .row {
-      margin-bottom: 50px;
+      margin-bottom: 30px;
     }
 
     .center{
@@ -439,8 +439,10 @@ main h4.section-header {
 <div class="maprow">
   <div id="comparison-container">
 
-    <div id="before" class="map"></div>
-    <div id="after" class="map"></div>
+    <div id="before" class="map">    ;
+</div>
+    <div id="after" class="map">   ;
+</div>
 		<!-- <div class='map-overlay' id='features'><h5>Visualizing Data Gaps for Local Law 97</h5>
 			<div id='pd'>
   			<p>Swipe and pan around the map to explore which covered buildings that have no emissions data.</p>
@@ -853,7 +855,7 @@ new ScrollMagic.Scene({triggerElement: "#trigger1",
 // firstsection paragraph 1
 new ScrollMagic.Scene({triggerElement: "#trigger2",
   triggerHook: "onleave",
-  duration: "58%",
+  duration: "75%",
   offset: 50
 })
 .setClassToggle("#firstsection1", "visible")
@@ -972,6 +974,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieWVraW05MiIsImEiOiJjazhueGlwdHMxM2s0M2ZxeDF5Z
       center: [-73.922160,40.755840],
       zoom: 12,
       minZoom: 12,
+      maxZoom: 12,
       scrollZoom: false,
 
     });
@@ -982,8 +985,10 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieWVraW05MiIsImEiOiJjazhueGlwdHMxM2s0M2ZxeDF5Z
       center: [-73.922160,40.755840],
       zoom: 12,
       minZoom: 12,
+      maxZoom: 12,
       scrollZoom: false,
   });
+
   // afterMap.on('load', function() {
   //       });
   // A selector or reference to HTML element
@@ -993,6 +998,11 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieWVraW05MiIsImEiOiJjazhueGlwdHMxM2s0M2ZxeDF5Z
       // Set this to enable comparing two maps by mouse movement:
       // mousemove: true
   });
+
+  map.addControl(new mapboxgl.NavigationControl())
+
+
+
 </script>
 
 
