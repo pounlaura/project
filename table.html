@@ -5,32 +5,44 @@
   <head>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   </head>
+<style>
+      td, th {
+        padding: 1px 4px;
+      }
+
+</style>
+
   <body>
   </body>
 
   <script type='text/javascript'>
+  // data = d3.csv('https://pounlaura.github.io/project/occupancy-table.csv', function(data) {console.log(data)});
+
+
   var tabulate = function (data,columns) {
     var table = d3.select('body').append('table')
-  	var thead = table.append('thead')
-  	var tbody = table.append('tbody')
-
+  	var thead = table.append('thead') //table head
+  	var tbody = table.append('tbody') //table body
+    //append header row
   	thead.append('tr')
   	  .selectAll('th')
   	    .data(columns)
   	    .enter()
   	  .append('th')
-  	    .text(function (d) { return d })
+  	    .text(function (column) { return column });
 
+    //create row for each object in the data
   	var rows = tbody.selectAll('tr')
   	    .data(data)
   	    .enter()
-  	  .append('tr')
+  	  .append('tr');
 
+//add values into the rows
   	var cells = rows.selectAll('td')
   	    .data(function(row) {
   	    	return columns.map(function (column) {
   	    		return { column: column, value: row[column] }
-  	      })
+  	    });
         })
         .enter()
       .append('td')
@@ -39,10 +51,24 @@
     return table;
   }
 
-  d3.csv('https://pounlaura.github.io/project/occupancy-table.csv',function (data) {
-  	var columns = ['Use Type','Occupancy Group']
-    tabulate(data,columns)
-  })
+   d3.csv('https://pounlaura.github.io/project/occupancy-table.csv',function (data) {
+  	var columns = ['Building Use Type', 'Occupancy Group']
+    tabulate(data, columns), console.log(data)
+  });
+
+
+
+
+
+  // // render the tables
+  //   tabulate(data, ['Building Use Type', 'Occupancy Group']); // 2 column table
+  //   tabulate(data, ['Building Use Type']); // table with only date column
+  //   tabulate(data, ['Occupancy Group']); // table with only close column
+
+  // d3.csv('https://pounlaura.github.io/project/occupancy-table.csv',function (data) {
+  // 	var columns = ['Use Type','Occupancy Group']
+  //   tabulate(data,columns)
+  // })
 
   </script>
 
