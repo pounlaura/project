@@ -1160,9 +1160,17 @@ function estimatedEmissionsSetup() {
       .attr('height', squareWidth)
       .attr('fill', '#00A780')
       .attr('x', (stack1Offset) + ((i % emissionsStackWidth) * squareTotalWidth))
-      .attr('y', svgHeight - (Math.floor(i/emissionsStackWidth) * squareTotalWidth))
+      .attr('y', svgHeight - ((Math.floor(i/emissionsStackWidth) * squareTotalWidth))-50)
       .style('opacity', 0);
-  };
+  }
+    reducedEmissionsGroup.append('text')
+    .attr('class', 'text')
+    .text('Goal emissions for LL97')
+    .attr('fill', '#214B47')
+    .style('font-size', '17px')
+    .attr('x',(stack1Offset))
+    .attr('y', svgHeight-10)
+    .style('opacity', 0);
 
 }
 
@@ -1194,6 +1202,10 @@ function estimatedEmissionsTransition1(event) {
         return Math.floor(i/emissionsStackWidth) * 10;
       })
       .style('opacity', 0);
+      svg.select('g.estimatedEmissions').selectAll('text')
+        .transition()
+        .duration(100)
+        .style('opacity', 0);
   }
 }
 
@@ -1212,6 +1224,10 @@ function estimatedEmissionsTransition2(event) {
         return Math.floor(reverseIndex/emissionsStackWidth) * 10;
       })
       .style('opacity', 1);
+      svg.select('g.reducedEmissions').selectAll('text')
+        .transition()
+        .duration(100)
+        .style('opacity', 1);
   }
 
   if (event.scrollDirection === 'REVERSE') {
@@ -1222,6 +1238,10 @@ function estimatedEmissionsTransition2(event) {
         return Math.floor(i/emissionsStackWidth) * 10;
       })
       .style('opacity', 0);
+      svg.select('g.reducedEmissions').selectAll('text')
+        .transition()
+        .duration(100)
+        .style('opacity', 0);
   }
 }
 
