@@ -44,7 +44,7 @@
 			font-family: 'Open Sans', sans-serif;
 			color:#353536;
 			font-weight:300;
-      line-height: 1.7;
+      line-height: 1.5;
       font-size: 1.25rem;
 		}
 
@@ -586,10 +586,10 @@ main h4.section-header {
         </div> -->
           <div>
           <h5 id="barGraphText1">For example, 1390 Saint Nicholas Ave. has 3 different primary uses:</h5>
-          <ol>
-            <li>Multifamily Housing - 43%</li>
-            <li>Office - 43%</li>
-            <li>Retail Store - 14%</li>
+          <ol style="text-align: left; list-style: inside;">
+            <li>Multifamily Housing: 43%</li>
+            <li>Office: 43%</li>
+            <li>Retail Store: 14%</li>
           </ol>
         </div>
           <h5 id="barGraphText2">The amount of emissions that need to be reduced changes depending on how occupancy group is defined.</h5>
@@ -1160,7 +1160,7 @@ function estimatedEmissionsSetup() {
   }
   estimatedEmissionsGroup.append('text')
     .attr('class', 'text')
-    .text('LL84 Estimated Emissions (2024)')
+    .text('LL84 Estimated Reductions (2024)')
     .attr('fill', '#214B47')
     .style('font-size', '17px')
     .attr('x',(stack2Offset))
@@ -1180,7 +1180,7 @@ function estimatedEmissionsSetup() {
   }
     reducedEmissionsGroup.append('text')
     .attr('class', 'text')
-    .text('LL97 Goal Emissions (2030)')
+    .text('LL97 Goal Reductions (2030)')
     .attr('fill', '#214B47')
     .style('font-size', '17px')
     .attr('x',(stack1Offset))
