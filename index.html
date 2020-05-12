@@ -150,7 +150,7 @@ main h4.section-header {
     }
 
 /* making firstvisualdiv and secondvisualdiv sticky */
-    #firstvisualdiv, #secondvisualdiv, #thirdvisualdiv, #fourthvisualdiv {
+    #firstvisualdiv, #secondvisualdiv, #thirdvisualdiv, #fourthvisualdiv, #fifthvisualdiv {
         position: -webkit-sticky;
         position: sticky;
         top: -1px;
@@ -207,7 +207,7 @@ main h4.section-header {
       transform: translateY(-50%);
     }
     .estimatedEmissions svg {
-      position: sticky;
+      /* position: sticky; */
       top: 50%;
       transform: translateY(-75%);
     }
@@ -286,7 +286,7 @@ main h4.section-header {
       text-align: center;
     }
     .rowCenter{
-      margin-bottom: 100px;
+      margin-bottom: 200px;
       text-align: center;
     }
     .center{
@@ -597,7 +597,7 @@ main h4.section-header {
     </div>
 
 
-    <div class="row">
+    <div class="rowCenter">
       <div class="col-12">
         <h5>How far does the existing data take us?</h5>
         <p>With the data limitations in mind, we estimated the emissions that would be reduced if LL84 covered buildings complied with LL97.
@@ -619,9 +619,9 @@ main h4.section-header {
   </div>
 </div>
 
-    <div class="row">
-      <div class="col-12">
-        <h5>Conclusions</h5>
+    <div class="rowCenter">
+      <div class="col-12" id="fifthvisualdiv">
+        <h5>Key Takeaways</h5>
         <p>If NYC wants to be able to implement LL97, there are serious data questions and limitations that must be addressed. And these issues must be ironed out soon because the first emissions limit goes into effect in less than four years.Significant time and effort is required to retrofit buildings and in order for these improvements to be made, building owners first need certainty about whether they are covered by the law and second, what their emission limits are. Without this information, building owners will not be able to take the appropriate measures to comply with the law. Furthermore, without a clear understanding of the covered buildings and respective emissions limits, officials will not be able to enforce the law to ensure that building owners reduce emissions. Without robust monitoring and enforcement, there may be little actual reduction in emissions limits.</p>
         <p>On a positive note, our analysis suggests that the LL97 can achieve more than its stated goal to reduce building emissions at a faster and greater rate than planned.</p>
       </div>
@@ -1145,7 +1145,7 @@ function estimatedEmissionsSetup() {
   }
   estimatedEmissionsGroup.append('text')
     .attr('class', 'text')
-    .text('Estimated emissions based on LL84')
+    .text('LL84 Estimated Emissions (2024)')
     .attr('fill', '#214B47')
     .style('font-size', '17px')
     .attr('x',(stack2Offset))
@@ -1165,7 +1165,7 @@ function estimatedEmissionsSetup() {
   }
     reducedEmissionsGroup.append('text')
     .attr('class', 'text')
-    .text('Goal emissions for LL97')
+    .text('LL97 Goal Emissions (2030)')
     .attr('fill', '#214B47')
     .style('font-size', '17px')
     .attr('x',(stack1Offset))
