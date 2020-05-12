@@ -158,7 +158,7 @@ main h4.section-header {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      height: 2000px;
+      height: 2500px;
     }
     .bldgnumTextColumn{
       display: flex;
@@ -177,7 +177,15 @@ main h4.section-header {
       top: 50%;
       transform: translateY(-50%);
     }
-    .squaresvg, .bldgsNum, .bar {
+    #emissionsHeadline4 {
+      margin-bottom: 450px;
+    }
+    .squaresvg, .bldgsNum, .bar{
+      position: sticky;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    #thirdvisualdiv .bldgImg{
       position: sticky;
       top: 50%;
       transform: translateY(-50%);
@@ -249,7 +257,9 @@ main h4.section-header {
     .row {
       margin-bottom: 30px;
     }
-
+    .rowBldgNum {
+      margin-top: -300px;
+    }
     .center{
       display: flex;
       flex-direction: column;
@@ -329,11 +339,6 @@ main h4.section-header {
 
 }
 
-.panel-text{
-  margin-left: 100px;
-  margin-right: 100px;
-}
-
 .methods {
   background-color: #F8F8F8;
 }
@@ -342,7 +347,6 @@ main h4.section-header {
   margin-left: 50px;
   margin-right: 40px;
 }
-
 
 	</style>
 </head>
@@ -438,8 +442,7 @@ main h4.section-header {
 <div class="row">
         <div class="col-4 emissionsTextColumn">
           <h5>We wanted to understand: what is the pathway to achieving LL97's goals?</h5>
-          <h5>GHG Emissions by the Numbers</h5>
-          <h5 id="emissionsHeadline1">NYC's annual emissions are 50.7 million metric tons of CO2 equivalent (MMTCO2e).</h5>
+          <h5 id="emissionsHeadline1"><span style="text-decoration: underline">GHG Emissions by the Numbers</span><br><br>NYC's annual emissions are 50.7 million metric tons of CO2 equivalent (MMTCO2e).</h5>
           <h5 id="emissionsHeadline2">Buildings are responsible for 70% of those emissions.</h5>
           <h5 id="emissionsHeadline3">Covered buildings under LL84 emitted 19.5 million metric tons in 2018.
           <p class="caveat">*estimated emissions from 25,164 covered buildings</p></h5>
@@ -466,9 +469,10 @@ main h4.section-header {
           </h5>
           <div id="bldgsNumText">
             <h5>Large gaps in available data make it difficult to answer that question.</h5>
-            <p> The city currently is missing GHG emissions data for about 40% of the covered buildings. About 50,000 buildings will be covered by LL97 (source: NYC Office of Sustainability). However, we only have data from about 27,000 buildings.
+            <p> The city currently is missing GHG emissions data for about 40% of the covered buildings. About 50,000 buildings will be covered by LL97*, but the city only has emissions data from about 27,000 buildings.
+              <p class="caveat">*Source: NYC Office of Sustainability</p></p>
             <br><br>
-  The maps below visualize the building emissions data gap. The left map displays the ~50,000 covered buildings. The orange buildings are the buildings with no data (buildings that have not reported emissions under LL84). The right map displays the ~27,000 private covered buildings with data. Slide to see the significant data gap for building greenhouse gas emissions.
+   <p>Using the arrows on the map below, slide between the two maps to view where we're missing data.
             </p>
         </div>
          </div>
@@ -530,23 +534,18 @@ main h4.section-header {
 <!-- zooming in on one mixed use building -->
 <div class="row">
         <div class="col-4 barGraphTextColumn" >
-          <!-- <br><br> -->
-          <h5 id="barGraphText1">A typical mixed-use building in NYC is complicated.</h5>
+          <h5>A typical mixed-use building in NYC is complicated.</h5>
           <div>
-          <h5>1390 Saint Nicholas Ave. in Manhattan </h5>
-          <p>Top Three Primary Uses</p>
-          <ol>
-            <li>Multifamily Housing - 43%</li>
-            <li>Office - 43%</li>
-            <li>Retail Store - 14%</li>
-          </ol>
+          <h5 id="barGraphText1">1390 Saint Nicholas Ave. in Manhattan </h5>
+          <p>three uses</p>
         </div>
-          <img src="1390-nicholas-street.jpg"  width="300" height="200">
-
+          <h5 id="barGraphText2">Emissions that need to be reduced change depending on how occupancy group is defined.</h5>
          </div>
-      <div class="col-8 " id="thirdvisualdiv">
-        <div class=bar>
-          <figcaption style="padding-left: 40px">Source: Energy and Water Disclosure Data for Local Law 84 (2019)
+      <div class="col-8" id="thirdvisualdiv">
+        <div class="bldgImg hidden"><img src="1390-nicholas-street.jpg" style="height: 400px"></img>
+        </div>
+        <div class="bar">
+          <figcaption style="padding-left: 40px">
           </figcaption>
         </div>
       </div>
@@ -586,7 +585,6 @@ main h4.section-header {
 <div class="panel" >
   <br>
   <br>
-  <div class="panel-text">
   <h5>How We Cleaned our Data and Did our Analysis</h5>
   <br>
 <h6>Identifying Buildings Covered by Local Law 97</h6>
@@ -650,7 +648,6 @@ main h4.section-header {
 <br>
 <br><br>
 <br>
-</div>
 
 
 </div>
@@ -947,22 +944,41 @@ var bldgNumSvg = function(){
       .attr('opacity', 0);
 };
 
-function bldgShow(){
-  var yBarScale = d3.scaleLinear()
-    .range([0,500])
-    .domain([0,50000]);
-  var bar = d3.select('.bldgsNum').selectAll('rect')
-    .transition()
-    .duration(600)
-    .attr('height', function(datum, index){
-      return yBarScale(datum[1]);
-    });
-    var barText = d3.selectAll('text')
+function bldgShow(event){
+  if (event.scrollDirection === 'FORWARD'){
+    var yBarScale = d3.scaleLinear()
+      .range([0,500])
+      .domain([0,50000]);
+    var bar = d3.select('.bldgsNum').selectAll('rect')
       .transition()
       .duration(600)
-      .delay(1200)
-      .attr('opacity',1);
+      .attr('height', function(datum, index){
+        return yBarScale(datum[1]);
+      });
+      var barText = d3.select('.bldgsNum').selectAll('text')
+        .transition()
+        .duration(600)
+        .delay(1200)
+        .attr('opacity',1);
+  }
+  if (event.scrollDirection === 'REVERSE'){
+    var yBarScale = d3.scaleLinear()
+      .range([0,500])
+      .domain([0,50000]);
+    var bar = d3.select('.bldgsNum').selectAll('rect')
+      .transition()
+      .duration(600)
+      .attr('height', function(datum, index){
+        return yBarScale(datum[1])-yBarScale(datum[1]);
+      });
+      var barText = d3.selectAll('text')
+        .transition()
+        .duration(600)
+        .delay(1200)
+        .attr('opacity',0);
+  }
 }
+
 //scenario 1 bargraph
 var barGraphSvg = function() {
   var width = 600;
@@ -971,6 +987,7 @@ var barGraphSvg = function() {
 
   var yBarScale = d3.scaleBand()
     .paddingInner(0.08)
+    .paddingOuter(0.18)
     .domain([0, 1])
     .range([0, height - 50], 0.1, 0.1);
 
@@ -991,7 +1008,7 @@ var barGraphSvg = function() {
     .attr('y', function (datum, index) { return yBarScale(index);})
     .attr('fill', function (datum, index) { return barColors[index]; })
     .attr('width', 0)
-    .attr('height', yBarScale.bandwidth());
+    .attr('height', yBarScale.bandwidth()-10);
   svg.selectAll("svg")
     .data(nicholas)
     .enter()
@@ -1008,32 +1025,52 @@ var barGraphSvg = function() {
     .attr('fill', 'white')
     .attr('opacity', 0);
 
-  svg.selectAll('svg')
-      .enter()
-      .append('text')
+  svg.append('text')
       .attr('x', 5)
       .attr('y', 18)
       .attr('text-anchor', 'center')
-      .style('color', '#214B47')
-      .text("% Emissions Reduction Required by 2024");
+      .attr('fill', '#214B47')
+      .style('font-size', '24px')
+      .style('font-weight', 450)
+      .text("% Emissions Reduction Required by 2024")
+      .attr('opacity', 0);
 };
 
-function barShow() {
-  var xBarScale = d3.scaleLinear()
-   .domain([0,50])
-   .range([0, 600]);
-  var bar = d3.select('.bar').selectAll('rect')
-    .transition()
-    .duration(600)
-    .attr('width', function(datum, index){
-      return xBarScale(datum[1]);
-    });
-  var barText = d3.selectAll('text')
-    .transition()
-    .duration(600)
-    .delay(1200)
-    .attr('opacity',1);
+function barShow(event) {
+  if (event.scrollDirection === 'FORWARD'){
+    var xBarScale = d3.scaleLinear()
+     .domain([0,50])
+     .range([0, 600]);
+    var bar = d3.select('.bar').selectAll('rect')
+      .transition()
+      .duration(600)
+      .attr('width', function(datum, index){
+        return xBarScale(datum[1]);
+      });
+    var barText = d3.select('.bar').selectAll('text')
+      .transition()
+      .duration(600)
+      .delay(600)
+      .attr('opacity',1);
+  }
+  if (event.scrollDirection === 'REVERSE'){
+    var xBarScale = d3.scaleLinear()
+     .domain([0,50])
+     .range([0, 600]);
+    var bar = d3.select('.bar').selectAll('rect')
+      .transition()
+      .duration(600)
+      .attr('width', function(datum, index){
+        return xBarScale(datum[1])-xBarScale(datum[1]);
+      });
+      var barText = d3.select('.bar').selectAll('text')
+        .transition()
+        .duration(600)
+        .attr('opacity',0);
+  }
 }
+
+
 
 // Scrollmagic controller and scenes
 var controller = new ScrollMagic.Controller();
@@ -1140,12 +1177,21 @@ new ScrollMagic.Scene({
 .addTo(controller)
 .on('enter', squaresMove);
 
-//scene for bar graph
+//scene for image
 
-new ScrollMagic.Scene({
-  triggerElement: "#barGraphText1",
+new ScrollMagic.Scene({triggerElement: "#barGraphText1",
   triggerHook: "onEnter",
-  duration: 0,
+  duration: "100%",
+  offset: 0,
+})
+.setClassToggle(".bldgImg", "visible")
+.addTo(controller);
+
+// scene for scenario bar barGraph
+new ScrollMagic.Scene({
+  triggerElement: "#barGraphText2",
+  triggerHook: "onEnter",
+  duration: 1,
 })
 .addTo(controller)
 .on('enter', barShow);
@@ -1153,7 +1199,7 @@ new ScrollMagic.Scene({
 new ScrollMagic.Scene({
   triggerElement: "#bldgsNumText",
   triggerHook: "onEnter",
-  duration: 0,
+  duration: 1,
 })
 .addTo(controller)
 .on('enter', bldgShow);
@@ -1198,6 +1244,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieWVraW05MiIsImEiOiJjazhueGlwdHMxM2s0M2ZxeDF5Z
 
 
 // Script for the accordion methods section
+
 var acc = document.getElementsByClassName("accordion");
 var i;
 
