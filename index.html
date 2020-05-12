@@ -149,11 +149,12 @@ main h4.section-header {
     }
 
 /* making firstvisualdiv and secondvisualdiv sticky */
-    #firstvisualdiv, #secondvisualdiv, #thirdvisualdiv {
+    #firstvisualdiv, #secondvisualdiv, #thirdvisualdiv, #fourthvisualdiv {
         position: -webkit-sticky;
         position: sticky;
         top: -1px;
         }
+/* text columns */
     .emissionsTextColumn {
       display: flex;
       flex-direction: column;
@@ -170,7 +171,8 @@ main h4.section-header {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      height: 2000px;
+      height: 3000px;
+      margin-bottom: 200px;
     }
     .emissionsTextColumn h5.sticky, .bldgnumTextColumn h5.sticky, .barGraphTextColumn h5.sticky {
       position: sticky;
@@ -180,11 +182,34 @@ main h4.section-header {
     #emissionsHeadline4 {
       margin-bottom: 450px;
     }
+    .estimatedEmissionsRow .textColumn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 1000px;
+      margin-bottom: 200px;
+    }
+    .estimatedEmissionsRow .textColumn h5.sticky {
+      /* margin: 250px 0 0px */
+      position: sticky;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .estimatedEmissionsRow .textColumn h5:first-child {
+      margin: 0 0 250px;
+    }
+  /* svg styles */
     .squaresvg, .bldgsNum, .bar{
       position: sticky;
       top: 50%;
       transform: translateY(-50%);
     }
+    .estimatedEmissions svg {
+      position: sticky;
+      top: 50%;
+      transform: translateY(-75%);
+    }
+  /* image div */
     #thirdvisualdiv .bldgImg{
       position: sticky;
       top: 50%;
@@ -257,7 +282,7 @@ main h4.section-header {
     .row {
       margin-bottom: 30px;
     }
-    .rowBldgNum {
+    .rowBldgsNum {
       margin-top: -300px;
     }
     .center{
@@ -355,6 +380,7 @@ main h4.section-header {
 
 	</style>
 </head>
+
 <body>
   <main role="main" class="container customcontainer">
     <header class="story-header interactive-header">
@@ -442,7 +468,6 @@ main h4.section-header {
 
       </div>
 </div>
-      <br>
       <!-- diagram 1 -->
 <div class="row">
         <div class="col-4 emissionsTextColumn">
@@ -454,15 +479,10 @@ main h4.section-header {
           <h5 id="emissionsHeadline4">LL97 aims to reduce at least 5.3 million metric tons by 2030 from covered buildings.</h5>
         </div>
       <div class="col-8" id="firstvisualdiv">
-        <br><br>
-        <!-- <div id="firstvisualdiv"> -->
          <div class="squaresvg">
            <figcaption style="padding-left: 40px">
            </figcaption>
          </div>
-
-        <br><br><br>
-            <!-- </div> -->
         </div>
         <br>
 </div>
@@ -482,7 +502,7 @@ main h4.section-header {
         </div>
          </div>
       <div class="col-8" id="secondvisualdiv">
-        <div class=bldgsNum>
+        <div class="bldgsNum">
         </div>
       </div>
     </div>
@@ -527,29 +547,26 @@ main h4.section-header {
       </figcaption>
     </div>
 </div>
-
-<div class="row">
-  <div class="col-12">
-        <h5>Even with data, there is no clear way to determine the emissions limit for each building.</h5>
-        <p>LL97 establishes building emissions limits by building occupancy group. However, the existing LL84 disclosure dataset does not include the building’s occupancy group. Furthermore, there currently is no existing method to match a building to its occupancy groups.</p>
-        <p>Determining a building’s occupancy group is complicated by the fact that many buildings have multiple uses - residential, commercial, medical, educational, institutional, and more. How the occupancy group is determined affects the emissions limit for a building.</p>
-  </div>
-</div>
-
 <!-- zooming in on one mixed use building -->
 <div class="row">
         <div class="col-4 barGraphTextColumn" >
-          <h5>A typical mixed-use building in NYC is complicated.</h5>
           <div>
-          <h5 id="barGraphText1">1390 Saint Nicholas Ave. in Manhattan has 3 different primary uses</h5>
+          <h5>Even with emissions data, there is no clear way to determine the emissions limit for each building.</h5>
+          <p>LL97 establishes different emissions limits by the buildings' occupancy groups, which are based on building use. However, the existing LL84 disclosure dataset does not include the buildings' occupancy groups. And currently, there is no easy method to match a building to its occupancy groups.</p>
+        </div>
+          <div>
+          <h5>NYC's buildings typically have multiple uses.</h5>
+          <p>Mixed-use buildings have a combination of residential, commercial, medical, educational, institutional, etc. This adds another level of complication. How the occupancy group is defined will affect the emissions limit for each building.</p>
+        </div>
+          <div>
+          <h5 id="barGraphText1">For example, 1390 Saint Nicholas Ave. in Manhattan has 3 different primary uses:</h5>
           <ol>
             <li>Multifamily Housing - 43%</li>
             <li>Office - 43%</li>
             <li>Retail Store - 14%</li>
           </ol>
         </div>
-          <h5 id="barGraphText2">LL97 has different limits for different uses.
-            <br><br>Emissions that need to be reduced change depending on how occupancy group is defined.</h5>
+          <h5 id="barGraphText2">Emissions that need to be reduced change depending on how occupancy group is defined.</h5>
          </div>
       <div class="col-8" id="thirdvisualdiv">
         <div class="bldgImg hidden"><img src="1390-nicholas-street.jpg" style="height: 400px"></img>
@@ -564,20 +581,24 @@ main h4.section-header {
 
     <div class="row">
       <div class="col-12">
-        <h5>How far towards the goal does the existing data take us?</h5>
+        <h5>How far does the existing data take us?</h5>
         <p>Despite having limited data, we still wanted to see how far towards the 40% by 2030 goal the existing data could take us. We cleaned the data to only include private buildings with reported emissions greater than zero. Then we self-assigned buildings an occupancy group based on the self-reported primary use. (See methodology section for full explanation). </p>
         <p>This resulted in 19,697 properties (for a total of 24,392 buildings) with what we considered “usable” data. Of these, 4,266 properties (6,219 buildings) are non-compliant for the 2024 limit, meaning 25% of buildings require energy retrofits and improvements to meet the 2024 limit. If all of these buildings fully complied to reduce their emissions to the 2024 level, the aggregate emissions reduction would be 6,249,605 MTCO2e.</p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-4">
-        <h5>With the data we have now, the estimated impact in emission reduction is 6.2 MMTCO2e by 2024.</h5>
-        <h5>That's almost 1 mil. metric tons ahead of the minimum goal for 2030.</h5>
-      </div>
-      <div class="col-8">
-          //insert 4th iteration of box visual
-      </div>
+
+<!-- estimated emissions compared with goal emissions -->
+    <div class="row estimatedEmissionsRow">
+  <div class="col-4 textColumn">
+    <h5 id="estimatedEmissionsHeadline1">With the data we have now, the estimated impact in emission reduction is 6.2 MMTCO2e by 2024.</h5>
+    <h5 id="estimatedEmissionsHeadline2">That's almost 1 mil. metric tons ahead of the minimum goal for 2030.</h5>
+  </div>
+  <div class="col-8" id="fourthvisualdiv">
+    <div class="estimatedEmissions">
+      <svg></svg>
     </div>
+  </div>
+</div>
 
     <div class="row">
       <div class="col-12">
@@ -591,92 +612,67 @@ main h4.section-header {
 
 <!-- Creating the methods section at the end of the package -->
 <div class="methods">
-<button class="accordion">Read about our Methodology</button>
-<div class="panel" >
-  <br>
-  <br>
+  <button class="accordion">Read about our Methodology</button>
+  <div class="panel">
+    <br><br>
   <div class="panel-text">
-  <h5>How We Cleaned our Data and Did our Analysis</h5>
-  <br>
-<h6>Identifying Buildings Covered by Local Law 97</h6>
-  <p >There currently is no official list of buildings that are covered by Local Law 97. However, the NYC Mayor’s Office of Sustainability has <a href="https://retrofitaccelerator.cityofnewyork.us/sites/default/files/public/MOS%20CMA%20General%20Factsheet.pdf" target="_blank">stated</a> that 50,000 buildings across 22,000 properties are expected to be affected by LL97. In order to map these ~50,000 buildings, we used the <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" target="_blank">2019 PLUTO data </a> to filter using the following criteria (obtained from the Urban Green Council) to estimate which buildings are covered buildings:</p>
-  <ol>
-    <li>Any building on a property with an area (gross square feet) larger than 100,000 SF
-</li>
-    <li>NO building on a property with an area smaller than 25,000 SF
-</li>
-    <li>Any single building on a property with an area between 25,000 and 100,000 SF
-</li>
-    <li>All buildings on properties between 25,000 and 100,000 SF where the total property floor area divided by the building count is greater than 25,000 SF (the number of equally sized buildings that could exist on that property are counted)
-</li>
-  </ol>
-  <p>We then joined the resulting filtered list of PLUTO tax lots with the <a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank">NYC Building Footprints</a>. The result is the map of 50,000 covered buildings.</p>
-
-<br>
-<br>
-<h6>Covered Buildings with Data</h6>
-<p >To make the map of the covered buildings with emissions data, we used the <a href="https://data.cityofnewyork.us/Environment/Energy-and-Water-Data-Disclosure-for-Local-Law-84-/vdzd-yy49" target="_blank">2019 Local Law 84</a> dataset. We removed all city buildings from the dataset resulting in 23,666 properties (or 27,294 buildings). Then this data was joined with the NYC Building Footprints to map.</p>
-<br>
-<br>
-<h6>Gathering Building Emissions Data for Covered Buildings</h6>
-<p >We relied on the Local Law 84 Energy and Water Disclosure data for building emissions. However, the 2019 (calendar year 2018) LL84 data included only ~26,000 properties. We then filtered the data by the following steps to remove unusable entries:</p>
-<ol>
-  <li>Removed all city buildings (city buildings are exempt from the LL97 limits and follow a different requirement)
-
-</li>
-  <li>Removed all rows where reported total GHG emissions is zero or not available
-
-</li>
-  <li>Removed all rows where the Source EUI is zero or not available
-</li>
-</ol>
-<p>The LL84 data does not include building occupancy group, which is the category that the LL97 limits are based on. Therefore we manually assigned an occupancy group for each property based on its self-reported primary use type. We pulled all the unique use types and mapped them to an occupancy group by reading through the occupancy group definitions in the <a href="https://up.codes/viewer/new_york_city/nyc-building-code-2014/chapter/3/use-and-occupancy-classification#3" target="_blank">NYC Building Code</a>. There were some reported use types that were difficult to categorize so we did not assign a group code to each use. We recognize that the occupancy group matching is likely to have errors. However, with no crosswalk between buildings or building class (in the PLUTO dataset) with occupancy group, this was the method we employed.</p>
-<br>
-<br>
-<p>TABLE OF USES MATCHED TO OCCUPANCY GROUPS TO BE ADDED</p>
-<br>
-<br>
-<p>With building occupancy groups assigned, we then filtered out the buildings not assigned an occupancy group. This left us with 19,697 properties (24,671 buildings). We used the occupancy group to add the 2024 emissions intensity limit for all properties. </p>
-<br>
-<b>Calculating 2018 GHG Emissions</b>
-<p>Instead of using the existing total GHG emissions column in LL84, we re-calculated emissions for each property using the emissions coefficients in LL97 for electricity, natural gas, fuel oil #2, fuel oil #4, and steam.
-</p>
-<p>Then to calculate a 2018 GHG intensity for each property, we divided the total GHG emissions figure by the gross floor area. We were then able to compare the 2018 emissions intensity with the 2024 intensity limit to identify which properties are non-compliant and must take action to reduce emissions. We found that 4,266 properties (6,219 buildings) would be non-compliant if they did not take action. This amounts to approximately 25.5% of covered buildings. This is a little higher than the targeted 20% of most inefficient buildings, but not too off, which gives confidence in our analysis.
-</p>
-<p>We did not include analysis of what the pathway looks like in respect to 2030 because the emissions coefficients for 2030 have not yet been determined. The emissions amount can vary greatly depending on the coefficient.
-</p>
-<p></p>
-<br>
-<br>
-<h6>Exploring the Emissions Limit Impact Based on Occupancy Group</h6>
-<p>To explore the importance of the occupancy group of a building on its emissions limit, we looked at what the 2024 emissions intensity would be if occupancy group were assigned based on solely the primary use and the top three reported uses. So we matched the second and third uses to occupancy groups as well. We then calculated the floor area percentage of each use to calculate a weighted average of the emissions intensity limits.The reported square footage of the three uses did not always match the reported gross floor area so we added the square footage for the three uses to calculate our own total building area column. As can be seen in the two example buildings, how a building’s occupancy class is determined can have a significant impact on its emissions intensity limit and how much the building must be retrofitted.
-</p>
-<br>
-<br>
-<h6>Calculating the Projected Emissions Reduction from Covered Buildings by 2024</h6>
-<p>We calculated the amount of GHG emissions that each building must reduce by 2024 to be compliant by subtracting the 2024 intensity from the 2018 intensity. Then multiplied this by the total floor area (MTCO2e). Then summed this value for all 19,697 properties. This resulted in 6,248,851.6 million MTCO2e being reduced by 2024 if all buildings complied.
-</p>
-<br>
-<br><br>
-<br>
+    <h5>How We Cleaned our Data and Did our Analysis</h5> <br>
+    <h6>Identifying Buildings Covered by Local Law 97</h6>
+    <p>There currently is no official list of buildings that are covered by Local Law 97. However, the NYC Mayor’s Office of Sustainability has <a href="https://retrofitaccelerator.cityofnewyork.us/sites/default/files/public/MOS%20CMA%20General%20Factsheet.pdf" target="_blank">stated</a> that 50,000 buildings across 22,000 properties are expected to be affected by LL97. In order to map these ~50,000 buildings, we used the <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" target="_blank">2019 PLUTO data </a> to filter using the following criteria (obtained from the Urban Green Council) to estimate which buildings are covered buildings:</p>
+    <ol>
+      <li>Any building on a property with an area (gross square feet) larger than 100,000 SF</li>
+    <li>NO building on a property with an area smaller than 25,000 SF</li>
+    <li>Any single building on a property with an area between 25,000 and 100,000 SF</li>
+    <li>All buildings on properties between 25,000 and 100,000 SF where the total property floor area divided by the building count is greater than 25,000 SF (the number of equally sized buildings that could exist on that property are counted)</li>
+    </ol>
+    <p>We then joined the resulting filtered list of PLUTO tax lots with the <a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank">NYC Building Footprints</a>. The result is the map of 50,000 covered buildings.</p>
+    <br><br>
+    <h6>Covered Buildings with Data</h6>
+    <p>To make the map of the covered buildings with emissions data, we used the <a href="https://data.cityofnewyork.us/Environment/Energy-and-Water-Data-Disclosure-for-Local-Law-84-/vdzd-yy49" target="_blank">2019 Local Law 84</a> dataset. We removed all city buildings from the dataset resulting in 23,666 properties (or 27,294 buildings). Then this data was joined with the NYC Building Footprints to map.</p>
+    <br><br>
+    <h6>Gathering Building Emissions Data for Covered Buildings</h6>
+    <p>We relied on the Local Law 84 Energy and Water Disclosure data for building emissions. However, the 2019 (calendar year 2018) LL84 data included only ~26,000 properties. We then filtered the data by the following steps to remove unusable entries:</p>
+    <ol>
+      <li>Removed all city buildings (city buildings are exempt from the LL97 limits and follow a different requirement)</li>
+      <li>Removed all rows where reported total GHG emissions is zero or not available</li>
+      <li>Removed all rows where the Source EUI is zero or not available</li>
+    </ol>
+    <p>The LL84 data does not include building occupancy group, which is the category that the LL97 limits are based on. Therefore we manually assigned an occupancy group for each property based on its self-reported primary use type. We pulled all the unique use types and mapped them to an occupancy group by reading through the occupancy group definitions in the <a href="https://up.codes/viewer/new_york_city/nyc-building-code-2014/chapter/3/use-and-occupancy-classification#3" target="_blank">NYC Building Code</a>. There were some reported use types that were difficult to categorize so we did not assign a group code to each use. We recognize that the occupancy group matching is likely to have errors. However, with no crosswalk between buildings or building class (in the PLUTO dataset) with occupancy group, this was the method we employed.</p>
+    <br><br>
+    <p>TABLE OF USES MATCHED TO OCCUPANCY GROUPS TO BE ADDED</p>
+    <br><br>
+    <p>With building occupancy groups assigned, we then filtered out the buildings not assigned an occupancy group. This left us with 19,697 properties (24,671 buildings). We used the occupancy group to add the 2024 emissions intensity limit for all properties. </p>
+    <br>
+    <b>Calculating 2018 GHG Emissions</b>
+    <p>Instead of using the existing total GHG emissions column in LL84, we re-calculated emissions for each property using the emissions coefficients in LL97 for electricity, natural gas, fuel oil #2, fuel oil #4, and steam.
+    </p>
+    <p>Then to calculate a 2018 GHG intensity for each property, we divided the total GHG emissions figure by the gross floor area. We were then able to compare the 2018 emissions intensity with the 2024 intensity limit to identify which properties are non-compliant and must take action to reduce emissions. We found that 4,266 properties (6,219 buildings) would be non-compliant if they did not take action. This amounts to approximately 25.5% of covered buildings. This is a little higher than the targeted 20% of most inefficient buildings, but not too off, which gives confidence in our analysis.
+    </p>
+    <p>We did not include analysis of what the pathway looks like in respect to 2030 because the emissions coefficients for 2030 have not yet been determined. The emissions amount can vary greatly depending on the coefficient.
+    </p>
+    <p></p>
+    <br><br>
+    <h6>Exploring the Emissions Limit Impact Based on Occupancy Group</h6>
+    <p>To explore the importance of the occupancy group of a building on its emissions limit, we looked at what the 2024 emissions intensity would be if occupancy group were assigned based on solely the primary use and the top three reported uses. So we matched the second and third uses to occupancy groups as well. We then calculated the floor area percentage of each use to calculate a weighted average of the emissions intensity limits.The reported square footage of the three uses did not always match the reported gross floor area so we added the square footage for the three uses to calculate our own total building area column. As can be seen in the two example buildings, how a building’s occupancy class is determined can have a significant impact on its emissions intensity limit and how much the building must be retrofitted.
+    </p>
+    <br><br>
+    <h6>Calculating the Projected Emissions Reduction from Covered Buildings by 2024</h6>
+    <p>We calculated the amount of GHG emissions that each building must reduce by 2024 to be compliant by subtracting the 2024 intensity from the 2018 intensity. Then multiplied this by the total floor area (MTCO2e). Then summed this value for all 19,697 properties. This resulted in 6,248,851.6 million MTCO2e being reduced by 2024 if all buildings complied.
+    </p>
+    <br><br><br><br>
 </div>
 
 </div>
 </div>
 <div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  <br><br><br><br><br><br>
   <p id="p-panel">Webpage created: May 11, 2020</p>
 </div>
 
 <!-- end of the methods section -->
 
 <script type="text/javascript">
-
+// grid vars
 var allEmissionsColor = '#CEDED6';
 var buildingEmissionsColor = '#214B47';
 var coveredEmissionsColor = '#00A780';
@@ -1080,6 +1076,124 @@ function barShow(event) {
   }
 }
 
+// estimated emissions vars
+var estimatedEmissionsVars = {
+  estimatedEmissionsSquares: 622,
+  reducedEmissionsSquares: 530,
+  svgWidth: 600,
+  svgHeight: 400,
+  squareWidth: 6,
+  squareGutter: 2,
+  get squareTotalWidth() {
+    return this.squareWidth + this.squareGutter;
+  },
+  emissionsStackWidth: 20,
+  get totalColumns() { return this.svgWidth / this.squareTotalWidth },
+  get stackGutterColumns() { return  (this.totalColumns - (this.emissionsStackWidth * 2)) / 3; },
+  get stack1Offset() { return this.stackGutterColumns * this.squareTotalWidth; },
+  get stack2Offset() { return ((2 * this.stackGutterColumns) + this.emissionsStackWidth) * this.squareTotalWidth },
+};
+
+function estimatedEmissionsSetup() {
+  var {
+    svgWidth,
+    svgHeight,
+    squareWidth,
+    squareGutter,
+    squareTotalWidth,
+    emissionsStackWidth,
+    estimatedEmissionsSquares,
+    reducedEmissionsSquares,
+    stack1Offset,
+    stack2Offset,
+  } = estimatedEmissionsVars;
+
+  var svg = d3.select('.estimatedEmissions').select('svg');
+  svg.attr('width', svgWidth)
+    .attr('height', svgHeight);
+  var reducedEmissionsGroup = svg.append('g').attr('class', 'reducedEmissions');
+  var estimatedEmissionsGroup = svg.append('g').attr('class', 'estimatedEmissions');
+
+  // Estimated Emissions
+  for (var i = estimatedEmissionsSquares; i >= 0; i-=1) {
+    estimatedEmissionsGroup.append('rect')
+      .attr('class', 'square')
+      .attr('width', squareWidth)
+      .attr('height', squareWidth)
+      .attr('fill', '#214B47')
+      .attr('x', (stack2Offset) + ((i % emissionsStackWidth) * squareTotalWidth))
+      .attr('y', svgHeight - (Math.floor(i/emissionsStackWidth) * squareTotalWidth))
+      .style('opacity', 0);
+  };
+
+  // Reduced Emissions
+  for (var i = reducedEmissionsSquares; i >= 0; i-=1) {
+    reducedEmissionsGroup.append('rect')
+      .attr('class', 'square')
+      .attr('width', squareWidth)
+      .attr('height', squareWidth)
+      .attr('fill', '#00A780')
+      .attr('x', (stack1Offset) + ((i % emissionsStackWidth) * squareTotalWidth))
+      .attr('y', svgHeight - (Math.floor(i/emissionsStackWidth) * squareTotalWidth))
+      .style('opacity', 0);
+  };
+
+}
+
+function estimatedEmissionsTransition1(event) {
+  var {
+    estimatedEmissionsSquares,
+    emissionsStackWidth,
+  } = estimatedEmissionsVars;
+  var svg = d3.select('.estimatedEmissions svg');
+  if (event.scrollDirection === 'FORWARD') {
+    svg.select('g.estimatedEmissions').selectAll('rect')
+      .transition()
+      .duration(100)
+      .delay(function(d, i) {
+        const reverseIndex = estimatedEmissionsSquares - i;
+        return Math.floor(reverseIndex/emissionsStackWidth) * 10;
+      })
+      .style('opacity', 1);
+  }
+  if (event.scrollDirection === 'REVERSE') {
+    svg.select('g.estimatedEmissions').selectAll('rect')
+      .transition()
+      .duration(100)
+      .delay(function(d, i) {
+        return Math.floor(i/emissionsStackWidth) * 10;
+      })
+      .style('opacity', 0);
+  }
+}
+
+function estimatedEmissionsTransition2(event) {
+  var {
+    reducedEmissionsSquares,
+    emissionsStackWidth,
+  } = estimatedEmissionsVars;
+  var svg = d3.select('.estimatedEmissions svg');
+  if (event.scrollDirection === 'FORWARD') {
+    svg.select('g.reducedEmissions').selectAll('rect')
+      .transition()
+      .duration(100)
+      .delay(function(d, i) {
+        const reverseIndex = reducedEmissionsSquares - i;
+        return Math.floor(reverseIndex/emissionsStackWidth) * 10;
+      })
+      .style('opacity', 1);
+  }
+
+  if (event.scrollDirection === 'REVERSE') {
+    svg.select('g.reducedEmissions').selectAll('rect')
+      .transition()
+      .duration(100)
+      .delay(function(d, i) {
+        return Math.floor(i/emissionsStackWidth) * 10;
+      })
+      .style('opacity', 0);
+  }
+}
 
 
 // Scrollmagic controller and scenes
@@ -1214,9 +1328,35 @@ new ScrollMagic.Scene({
 .addTo(controller)
 .on('enter', bldgShow);
 
+new ScrollMagic.Scene({
+  duration: 1,
+  triggerHook: .6,
+  triggerElement: '#estimatedEmissionsHeadline1'
+})
+.addTo(controller)
+.on('start', estimatedEmissionsTransition1);
+
+new ScrollMagic.Scene({
+  duration: 0,
+  triggerHook: .6,
+  triggerElement: '#estimatedEmissionsHeadline1',
+})
+.addTo(controller)
+.setPin('.estimatedEmissions');
+
+new ScrollMagic.Scene({
+  duration: 1,
+  triggerHook: .6,
+  triggerElement: '#estimatedEmissionsHeadline2'
+})
+.addTo(controller)
+.on('start', estimatedEmissionsTransition2);
+
+
 scrollVis();
 barGraphSvg();
 bldgNumSvg();
+estimatedEmissionsSetup();
 
 mapboxgl.accessToken = 'pk.eyJ1IjoieWVraW05MiIsImEiOiJjazhueGlwdHMxM2s0M2ZxeDF5ZTN3azk2In0.M9yh1eYd5GJ6CYgW2hMoZA';
   var beforeMap = new mapboxgl.Map({
@@ -1269,6 +1409,7 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
 
 </script>
 
