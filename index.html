@@ -31,8 +31,9 @@
       }
     }
     p.byline {
-      color: white;
+      color: #214B47;
       opacity: 1;
+      font-weight: 500;
     }
     p.timeline {
       text-align: left;
@@ -95,10 +96,6 @@
     }
 /* header style */
 main header.story-header {
-  background-color: #214B47;
-  background-size: cover;
-  background-repeat: no-repeat;
-  /* opacity: 0.6; */
   height: 100vh;
   position: relative;
   display: -ms-flexbox;
@@ -109,17 +106,27 @@ main header.story-header {
   justify-content: flex-start;
   z-index: 99;
 }
+
 main header.story-header .story-meta {
   z-index: 2;
   padding: 2rem 2rem 3rem;
-  color: white;
-  -ms-flex-item-align: end;
+  color: #214B47;
+  -ms-flex-item-align: center;
   align-self: flex-end;
   animation: fadeIn;
   animation-delay: 4s;
   animation-duration: 2s;
   animation-fill-mode: both;
   width: 100%;
+}
+main header.story-header .headerBackgroundImage {
+  background-image:url("map_img.png");
+  opacity:0.4;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 main h4.section-header {
     font-size: 3.5rem;
@@ -396,6 +403,7 @@ main h4.section-header {
 <body>
   <main role="main" class="container customcontainer">
     <header class="story-header interactive-header">
+              <div class="headerBackgroundImage"></div>
               <div class="story-meta">
 
                 <h1 class="story-heading interactive-headline" itemprop="headline" style="white-space: normal; float: none; display: block; position: static;">Devil's in the Data: <br data-owner="balance-text">Pathway to Reducing NYC's Building Emissions</h1>
