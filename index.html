@@ -159,13 +159,14 @@ main h4.section-header {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      height: 2500px;
+      height: 3000px;
     }
     .bldgnumTextColumn{
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       height: 2000px;
+      margin-top: -300px;
     }
     .barGraphTextColumn{
       display: flex;
@@ -282,9 +283,7 @@ main h4.section-header {
     .row {
       margin-bottom: 30px;
     }
-    .rowBldgsNum {
-      margin-top: -300px;
-    }
+
     .center{
       display: flex;
       flex-direction: column;
@@ -965,7 +964,6 @@ function bldgShow(event){
       var barText = d3.select('.bldgsNum').selectAll('text')
         .transition()
         .duration(600)
-        .delay(1200)
         .attr('opacity',1);
   }
   if (event.scrollDirection === 'REVERSE'){
@@ -1257,13 +1255,13 @@ new ScrollMagic.Scene({triggerElement: "#trigger3",
 .addTo(controller);
 
 // scene for diagram texts
-new ScrollMagic.Scene({
-  triggerElement: "#emissionsHeadline1",
-  triggerHook: "onCenter",
-  duration: "10%",
-})
-.setClassToggle("#emissionsHeadline1", "sticky")
-.addTo(controller);
+// new ScrollMagic.Scene({
+//   triggerElement: "#emissionsHeadline1",
+//   triggerHook: "onCenter",
+//   duration: "10%",
+// })
+// .setClassToggle("#emissionsHeadline1", "sticky")
+// .addTo(controller);
 
 //scene for diagram 1
 new ScrollMagic.Scene({
@@ -1330,7 +1328,7 @@ new ScrollMagic.Scene({
 
 new ScrollMagic.Scene({
   duration: 1,
-  triggerHook: .6,
+  triggerHook: .4,
   triggerElement: '#estimatedEmissionsHeadline1'
 })
 .addTo(controller)
