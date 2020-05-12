@@ -1,4 +1,4 @@
-unique_uses,group
+Building Use Type,Occupancy Group
 Adult Education,B
 Ambulatory Surgical Center,B2
 Automobile Dealership,M
@@ -12,55 +12,55 @@ Data Center,B
 Distribution Center,S
 Enclosed Mall,M
 Financial Office,B
-Fitness Center/Health Club/Gym,
+Fitness Center/Health Club/Gym,Unmatched
 Food Sales,M
 Food Service,A
 Hospital (General Medical & Surgical),I-2
 Hotel,R-1
 Ice/Curling Rink,A
 K-12 School,E
-Laboratory,
-Library,
+Laboratory,Unmatched
+Library,Unmatched
 Lifestyle Center,A
 Manufacturing/Industrial Plant,F
-Medical Office,
-Mixed Use Property,
+Medical Office,Unmatched
+Mixed Use Property,Unmatched
 Movie Theater,A
 Multifamily Housing,R-2
 Museum,A
 Museum,A
 Non-Refrigerated Warehouse,S
 Office,B
-Other,
-Other - Education,
+Other,Unmatched
+Other - Education,Unmatched
 Other - Entertainment/Public Assembly,A
-Other - Lodging/Residential,
+Other - Lodging/Residential,Unmatched
 Other - Mall,M
-Other - Public Services,
-Other - Recreation,
-Other - Restaurant/Bar,
-Other - Services,
-Other - Specialty Hospital,
-Other - Technology/Science,
-Outpatient Rehabilitation/Physical Therapy,
+Other - Public Services,Unmatched
+Other - Recreation,Unmatched
+Other - Restaurant/Bar,Unmatched
+Other - Services,Unmatched
+Other - Specialty Hospital,Unmatched
+Other - Technology/Science,Unmatched
+Outpatient Rehabilitation/Physical Therapy,Unmatched
 Parking,S
 Performing Arts,A
-"Personal Services (Health/Beauty, Dry Cleaning, etc.)",
+"Personal Services (Health/Beauty, Dry Cleaning, etc.)",Unmatched
 Pre-school/Daycare,E
-Prison/Incarceration,
+Prison/Incarceration,Unmatched
 Refrigerated Warehouse,S
 "Repair Services (Vehicle, Shoe, Locksmith, etc.)",F
 Residence Hall/Dormitory,R-1
-Residential Care Facility,
+Residential Care Facility,Unmatched
 Restaurant,A
 Retail Store,M
 Self-Storage Facility,S
-Senior Care Community,
+Senior Care Community,Unmatched
 Social/Meeting Hall,A
 Strip Mall,M
 Supermarket/Grocery Store,M
 Transportation Terminal/Station,A
 Urgent Care/Clinic/Other Outpatient,B2
-Vocational School,
+Vocational School,Unmatched
 Wholesale Club/Supercenter,M
 Worship Facility,A
