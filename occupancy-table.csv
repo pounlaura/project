@@ -1,0 +1,66 @@
+unique_uses,group
+Adult Education,B
+Ambulatory Surgical Center,B2
+Automobile Dealership,M
+Bank Branch,B
+Bar/Nightclub,A
+Bowling Alley,A
+College/University,B
+Convenience Store without Gas Station,M
+Courthouse,A
+Data Center,B
+Distribution Center,S
+Enclosed Mall,M
+Financial Office,B
+Fitness Center/Health Club/Gym,
+Food Sales,M
+Food Service,A
+Hospital (General Medical & Surgical),I-2
+Hotel,R-1
+Ice/Curling Rink,A
+K-12 School,E
+Laboratory,
+Library,
+Lifestyle Center,A
+Manufacturing/Industrial Plant,F
+Medical Office,
+Mixed Use Property,
+Movie Theater,A
+Multifamily Housing,R-2
+Museum,A
+Museum,A
+Non-Refrigerated Warehouse,S
+Office,B
+Other,
+Other - Education,
+Other - Entertainment/Public Assembly,A
+Other - Lodging/Residential,
+Other - Mall,M
+Other - Public Services,
+Other - Recreation,
+Other - Restaurant/Bar,
+Other - Services,
+Other - Specialty Hospital,
+Other - Technology/Science,
+Outpatient Rehabilitation/Physical Therapy,
+Parking,S
+Performing Arts,A
+"Personal Services (Health/Beauty, Dry Cleaning, etc.)",
+Pre-school/Daycare,E
+Prison/Incarceration,
+Refrigerated Warehouse,S
+"Repair Services (Vehicle, Shoe, Locksmith, etc.)",F
+Residence Hall/Dormitory,R-1
+Residential Care Facility,
+Restaurant,A
+Retail Store,M
+Self-Storage Facility,S
+Senior Care Community,
+Social/Meeting Hall,A
+Strip Mall,M
+Supermarket/Grocery Store,M
+Transportation Terminal/Station,A
+Urgent Care/Clinic/Other Outpatient,B2
+Vocational School,
+Wholesale Club/Supercenter,M
+Worship Facility,A
