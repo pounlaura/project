@@ -45,6 +45,7 @@
 			color:#353536;
 			font-weight:300;
       line-height: 1.7;
+      font-size: 1.25rem;
 		}
 
 
@@ -68,7 +69,7 @@
 		}
     h5 {
       color: #214B47;
-      font-size: 24px;
+      font-size: 1.75rem;
     }
 
     h6 {
@@ -172,7 +173,7 @@ main h4.section-header {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      height: 3000px;
+      height: 2000px;
       margin-bottom: 200px;
     }
     .emissionsTextColumn h5.sticky, .bldgnumTextColumn h5.sticky, .barGraphTextColumn h5.sticky {
@@ -282,8 +283,12 @@ main h4.section-header {
 /* style for row */
     .row {
       margin-bottom: 30px;
+      text-align: center;
     }
-
+    .rowCenter{
+      margin-bottom: 100px;
+      text-align: center;
+    }
     .center{
       display: flex;
       flex-direction: column;
@@ -547,18 +552,24 @@ main h4.section-header {
     </div>
 </div>
 <!-- zooming in on one mixed use building -->
+<div class="rowCenter">
+  <h5>There is no clear way to determine the emissions limit for each building.</h5>
+  <p>Even with emissions data, it's difficult to figure out how much emissions each building owner has to reduce. LL97 establishes different emissions limits by the buildings' occupancy groups, which are based on building use. However, the existing LL84 disclosure dataset does not include the buildings' occupancy groups. And currently, there is no easy method to match a building to its occupancy groups.</p>
+  <br>
+  <p>Moreover, NYC's buildings typically have multiple uses, resulting in multiple occupancy groups. Mixed-use buildings have a combination of residential, commercial, medical, educational, institutional, etc. This adds another level of complication because how the occupancy group is defined will affect the emissions limit for each building.</p>
+</div>
 <div class="row">
         <div class="col-4 barGraphTextColumn" >
-          <div>
+          <!-- <div>
           <h5>Even with emissions data, there is no clear way to determine the emissions limit for each building.</h5>
           <p>LL97 establishes different emissions limits by the buildings' occupancy groups, which are based on building use. However, the existing LL84 disclosure dataset does not include the buildings' occupancy groups. And currently, there is no easy method to match a building to its occupancy groups.</p>
         </div>
           <div>
           <h5>NYC's buildings typically have multiple uses.</h5>
           <p>Mixed-use buildings have a combination of residential, commercial, medical, educational, institutional, etc. This adds another level of complication. How the occupancy group is defined will affect the emissions limit for each building.</p>
-        </div>
+        </div> -->
           <div>
-          <h5 id="barGraphText1">For example, 1390 Saint Nicholas Ave. in Manhattan has 3 different primary uses:</h5>
+          <h5 id="barGraphText1">For example, 1390 Saint Nicholas Ave. has 3 different primary uses:</h5>
           <ol>
             <li>Multifamily Housing - 43%</li>
             <li>Office - 43%</li>
@@ -1120,7 +1131,16 @@ function estimatedEmissionsSetup() {
       .attr('height', squareWidth)
       .attr('fill', '#214B47')
       .attr('x', (stack2Offset) + ((i % emissionsStackWidth) * squareTotalWidth))
-      .attr('y', svgHeight - (Math.floor(i/emissionsStackWidth) * squareTotalWidth))
+      .attr('y', svgHeight - ((Math.floor(i/emissionsStackWidth) * squareTotalWidth))-50)
+      .style('opacity', 0);
+
+    estimatedEmissionsGroup.append('text')
+      .attr('class', 'text')
+      .text('Estimated emissions based on LL84')
+      .attr('fill', '#214B47')
+      .style('font-size', '18px')
+      .attr('x',(stack2Offset) + ((i % emissionsStackWidth) * squareTotalWidth))
+      .attr('y', svgHeight-10)
       .style('opacity', 0);
   };
 
@@ -1152,6 +1172,10 @@ function estimatedEmissionsTransition1(event) {
         const reverseIndex = estimatedEmissionsSquares - i;
         return Math.floor(reverseIndex/emissionsStackWidth) * 10;
       })
+      .style('opacity', 1);
+    svg.select('g.estimatedEmissions').selectAll('text')
+      .transition()
+      .duration(100)
       .style('opacity', 1);
   }
   if (event.scrollDirection === 'REVERSE') {
