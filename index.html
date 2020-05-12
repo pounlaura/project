@@ -655,50 +655,100 @@ function squaresTransition(event) {
 }
 
 // diagram 4
-function squaresMove () {
+function squaresMove (event) {
   var squaresvg = d3.select('.squaresvg');
   var stayEmissions = squaresvg.select('.stayEmissions');
   var reducedEmissions = squaresvg.select('.reducedEmissions');
+  if (event.scrollDirection === 'FORWARD') {
+    /* Scale groups */
+    stayEmissions.transition()
+    .duration(1000)
+    .attrTween("transform", function(){
+      return function(t) {
+        return "scale("+ (1 - t*.1) +")";
+      }
+    });
 
-  stayEmissions.transition()
-  .duration(1000)
-  .attrTween("transform", function(){
-    return function(t) {
-      return "scale("+ (1 - t*.1) +")";
-    }
-  });
+    reducedEmissions.transition()
+    .duration(1000)
+    .attrTween("transform", function(){
+      return function(t) {
+        return `
+        translate(0, ${t*15})
+        scale(${1 - t*.1})
+        `;
+      }
+    });
 
-  reducedEmissions.transition()
-  .duration(1000)
-  .attrTween("transform", function(){
-    return function(t) {
-      return `
-      translate(0, ${t*15})
-      scale(${1 - t*.1})
-      `;
-    }
-  });
+    /* separate reduced emissions group */
+    reducedEmissions.selectAll('rect')
+    .transition()
+    .duration(1000)
+    .attrTween("x", function(datum, index){
+      return function(t){
+        const originalPosition = (index * 8)%600;
+        const finalPosition = (index * 8)%304;
+        return originalPosition - t*(originalPosition-finalPosition);
+    }})
+    .attrTween("y", function(datum, index){
+      return function(t){
+        var originalPosition = Math.floor(((index + 4541)*8)/600) * 8;
+        var finalPosition = ((4541*8)/600*8) + (Math.floor(index / 38) * 8);
+        return originalPosition - t*(originalPosition - finalPosition);
+      }
+    });
 
-  d3.select('.reducedEmissions').selectAll('rect')
-  .transition()
-  .duration(1001)
-  .attrTween("x", function(datum, index){
-    return function(t){
-      const originalPosition = (index * 8)%600;
-      const finalPosition = (index *8)%304;
-      return originalPosition - t*(originalPosition-finalPosition);
-  }})
-  .attrTween("y", function(datum, index){
-    return function(t){
-      var originalPosition = Math.floor(((index + 4541)*8)/600) * 8;
-      var finalPosition = ((4541*8)/600*8) + (Math.floor(index / 38) * 8);
-      return originalPosition - t*(originalPosition - finalPosition);
-    }
-  });
+    /* change caption */
+    d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: Urban Green Council, Local Law 97</span>");
+  }
 
-  d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: Urban Green Council, Local Law 97</span>");
+  if (event.scrollDirection === 'REVERSE') {
+    /* Scale groups */
+    stayEmissions.transition()
+    .duration(1000)
+    .attrTween("transform", function(){
+      return function(t) {
+        return "scale("+ (.9 + (t*.1)) +")";
+      }
+    });
+
+    reducedEmissions.transition()
+    .duration(1000)
+    .attrTween("transform", function(){
+      return function(t) {
+        return `
+        translate(0, ${15 - t*15})
+        scale(${(.9 + t*.1)})
+        `;
+      }
+    });
+
+    /* rejoin reduced emissions group */
+    reducedEmissions.selectAll('rect')
+    .transition()
+    .duration(1000)
+    .attrTween('x', function(datum, index) {
+      return function(t) {
+        var originalPosition = (index * 8)%304;
+        var finalPosition = ((index + 4541) * 8)%600;
+        var returnXPos =  originalPosition + t*(finalPosition - originalPosition);
+        return returnXPos;
+      }
+    })
+    .attrTween('y', function(datum, index) {
+      return function (t) {
+        var adjustedIndex = 4541 + index;
+        var originalPosition = Math.floor(4541*8/600*8) + (Math.floor(index / 38) * 8);
+        var finalPosition = Math.floor(((index + 4541)*8)/600) * 8;
+        var returnYPos = originalPosition + t*(finalPosition - originalPosition);
+        return returnYPos;
+      }
+    });
+
+    /* change caption */
+    d3.select('figcaption').html("<span>1 square = 10000 metric tons; Source: Urban Green Council, Local Law 97</span>");
+  }
 }
-
 //building number comparison bargraph
 var bldgNumSvg = function(){
   var width = 600;
@@ -815,7 +865,7 @@ var barGraphSvg = function() {
       .enter()
       .append('text')
       .attr('x', 5)
-      .attr('y', 182)
+      .attr('y', 18)
       .attr('text-anchor', 'center')
       .style('color', '#214B47')
       .text("% Emissions Reduction Required by 2024");
