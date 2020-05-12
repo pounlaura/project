@@ -40,7 +40,7 @@
     p.caveat {
       font-size: 10px;
     }
-		p {
+		p, ol {
 			font-family: 'Open Sans', sans-serif;
 			color:#353536;
 			font-weight:300;
@@ -49,11 +49,11 @@
 		}
 
 
-    ol {
+    /* ol {
 			font-family: 'Open Sans', sans-serif;
 			color:#353536;
 			font-weight:400;
-		}
+		} */
 
 		svg {
 			width:100%;
@@ -74,7 +74,8 @@
 
     h6 {
       color: #0C281F;
-      font-size: 20px;
+      font-size: 22px;
+      font-weight: bold;
     }
 
     h1.story-heading {
@@ -382,6 +383,13 @@ main h4.section-header {
   margin-right: 40px;
 }
 
+#table-head {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
 	</style>
 </head>
 
@@ -390,7 +398,7 @@ main h4.section-header {
     <header class="story-header interactive-header">
               <div class="story-meta">
 
-                <h1 class="story-heading interactive-headline" itemprop="headline" style="white-space: normal; float: none; display: block; position: static;">The Real Path to<br data-owner="balance-text">Reducing NYC's Emissions</h1>
+                <h1 class="story-heading interactive-headline" itemprop="headline" style="white-space: normal; float: none; display: block; position: static;">Devil's in the Data: <br data-owner="balance-text">Pathway to Reducing NYC's Building Emissions</h1>
                 <div class="story-meta-footer interactive-meta-footer">
                   <div class="interactive-byline">
         <p class="byline">Amber Kim, Laura Kim, Jordan Owen <br></br>
@@ -562,7 +570,7 @@ main h4.section-header {
 <!-- zooming in on one mixed use building -->
 <div class="rowCenter">
   <h5>There is no clear way to determine the emissions limit for each building.</h5>
-  <p>Even with emissions data, it's difficult to figure out how much emissions each building owner has to reduce. LL97 establishes different emissions limits by the buildings' occupancy groups, which are based on building use. However, the existing LL84 disclosure dataset does not include the buildings' occupancy groups. And currently, there is no easy method to match a building to its occupancy groups.</p>
+  <p>Even with emissions data, it's difficult to figure out how much emissions each building owner has to reduce. LL97 establishes different emissions limits based on building occupancy groups (occupancy groups are based on building use). However, the existing LL84 disclosure dataset does not include the buildings' occupancy groups. And currently, there is no easy method to match a building to its occupancy groups.</p>
   <br>
   <p>Moreover, NYC's buildings typically have multiple uses, resulting in multiple occupancy groups. Mixed-use buildings have a combination of residential, commercial, medical, educational, institutional, etc. This adds another level of complication because how the occupancy group is defined will affect the emissions limit for each building.</p>
 </div>
@@ -584,7 +592,7 @@ main h4.section-header {
             <li>Retail Store - 14%</li>
           </ol>
         </div>
-          <h5 id="barGraphText2">Emissions that need to be reduced change depending on how occupancy group is defined.</h5>
+          <h5 id="barGraphText2">The amount of emissions that need to be reduced changes depending on how occupancy group is defined.</h5>
          </div>
       <div class="col-8" id="thirdvisualdiv">
         <div class="bldgImg hidden"><img src="1390-nicholas-street.jpg" style="height: 400px"></img>
@@ -600,17 +608,22 @@ main h4.section-header {
     <div class="rowCenter">
       <div class="col-12">
         <h5>How far does the existing data take us?</h5>
-        <p>With the data limitations in mind, we estimated the emissions that would be reduced if LL84 covered buildings complied with LL97.
-          We cleaned the data to only include private buildings with reported emissions greater than zero. Then we self-assigned buildings an occupancy group based on the self-reported primary use. (See methodology section for full explanation). </p>
-        <p>This resulted in 19,697 properties (for a total of 24,392 buildings) with what we considered “usable” data. Of these, 4,266 properties (6,219 buildings) are non-compliant for the 2024 limit, meaning 25% of buildings require energy retrofits and improvements to meet the 2024 limit. If all of these buildings fully complied to reduce their emissions to the 2024 level, the aggregate emissions reduction would be 6,249,605 MTCO2e.</p>
+        <p>With the data limitations in mind, we estimated the emissions impact that the currently available data would have if all LL84 covered buildings complied with LL97. We cleaned the data to only include private buildings with reported emissions greater than zero. Then, we self-assigned buildings a primary occupancy group based on their self-reported primary use. (See methodology section for details.) </p>
+        <ol>
+        <li>This resulted in 24,392 buildings (or 19,697 properties) with what we considered “usable” data. </li>
+        <li>Of these, 6,219 buildings (4,266 properties) are non-compliant for the 2024 limit, meaning 25% of buildings require energy retrofits and improvements by 2024.</li>
+        <li>If all of these buildings fully complied to reduce their emissions to the 2024 level, the aggregate emissions reduction would be 6,249,605 MTCO2e.</li>
+      </ol>
+
       </div>
     </div>
 
 <!-- estimated emissions compared with goal emissions -->
     <div class="row estimatedEmissionsRow">
   <div class="col-4 textColumn">
-    <h5 id="estimatedEmissionsHeadline1">With the data we have now, the estimated impact in emission reduction is 6.2 MMTCO2e by 2024.</h5>
-    <h5 id="estimatedEmissionsHeadline2">That's almost 1 mil. metric tons ahead of the minimum goal for 2030.</h5>
+    <h5 id="estimatedEmissionsHeadline1">If all 6,219 buildings reduce emissions to meet the 2024 level, the estimated impact in emission reduction is 6.2 MMTCO2e.
+</h5>
+    <h5 id="estimatedEmissionsHeadline2">That's almost 1 MMTCO2e ahead of the minimum goal for 2030.</h5>
   </div>
   <div class="col-8" id="fourthvisualdiv">
     <div class="estimatedEmissions">
@@ -622,8 +635,10 @@ main h4.section-header {
     <div class="rowCenter">
       <div class="col-12" id="fifthvisualdiv">
         <h5>Key Takeaways</h5>
-        <p>If NYC wants to be able to implement LL97, there are serious data questions and limitations that must be addressed. And these issues must be ironed out soon because the first emissions limit goes into effect in less than four years.Significant time and effort is required to retrofit buildings and in order for these improvements to be made, building owners first need certainty about whether they are covered by the law and second, what their emission limits are. Without this information, building owners will not be able to take the appropriate measures to comply with the law. Furthermore, without a clear understanding of the covered buildings and respective emissions limits, officials will not be able to enforce the law to ensure that building owners reduce emissions. Without robust monitoring and enforcement, there may be little actual reduction in emissions limits.</p>
-        <p>On a positive note, our analysis suggests that the LL97 can achieve more than its stated goal to reduce building emissions at a faster and greater rate than planned.</p>
+        <p>We discovered there are serious limitations, caveats, and questions with the existing data that make it challenging for NYC to be able to successfully implement LL97. However, despite the limited data, our analysis suggests that NYC can significantly surpass its 40% by 2030 goal at a faster and greater rate than planned. NYC could potentially surpass its goal by ~1 MMTCO2e six years early in 2024. Whether this can actually be achieved lies in the details of the data.
+</p> <br>
+        <p>First and foremost, NYC needs to expand enforcement of LL84 reporting and develop a method and dataset to match buildings with their occupancy group. These issues must be ironed out soon because the first emissions limit goes into effect in less than four years and retrofitting buildings requires significant time, effort, and investment. In order for these improvements to be made, building owners first need certainty about whether they are covered by LL97 and second, what their emission limits are. Accurate data will enable building owners to take the appropriate measures to comply with the law. Furthermore, without a clear understanding of which buildings are covered and their respective emissions limits, the City, specifically the new Office of Building Energy and Emissions Performance within NYC Dept. of Buildings will not be able to enforce the law and ensure that building owners reduce emissions. Without robust monitoring and enforcement, there may be little actual reduction in building emissions. By filling in the data gaps, NYC will be able to make progress in their pathway to reducing building emissions and reach the goal of 80% by 2050.
+</p>
       </div>
     </div>
 
@@ -658,11 +673,11 @@ main h4.section-header {
     </ol>
     <p>The LL84 data does not include building occupancy group, which is the category that the LL97 limits are based on. Therefore we manually assigned an occupancy group for each property based on its self-reported primary use type. We pulled all the unique use types and mapped them to an occupancy group by reading through the occupancy group definitions in the <a href="https://up.codes/viewer/new_york_city/nyc-building-code-2014/chapter/3/use-and-occupancy-classification#3" target="_blank">NYC Building Code</a>. There were some reported use types that were difficult to categorize so we did not assign a group code to each use. We recognize that the occupancy group matching is likely to have errors. However, with no crosswalk between buildings or building class (in the PLUTO dataset) with occupancy group, this was the method we employed.</p>
     <br><br>
-    <p>TABLE OF USES MATCHED TO OCCUPANCY GROUPS TO BE ADDED</p>
+    <center><p id="table-head">How We Assigned Occupancy Groups to Reported Building Uses</p><img src="occupancy-table.png"></img></center>
     <br><br>
     <p>With building occupancy groups assigned, we then filtered out the buildings not assigned an occupancy group. This left us with 19,697 properties (24,671 buildings). We used the occupancy group to add the 2024 emissions intensity limit for all properties. </p>
     <br>
-    <b>Calculating 2018 GHG Emissions</b>
+    <h6>Calculating 2018 GHG Emissions</h6>
     <p>Instead of using the existing total GHG emissions column in LL84, we re-calculated emissions for each property using the emissions coefficients in LL97 for electricity, natural gas, fuel oil #2, fuel oil #4, and steam.
     </p>
     <p>Then to calculate a 2018 GHG intensity for each property, we divided the total GHG emissions figure by the gross floor area. We were then able to compare the 2018 emissions intensity with the 2024 intensity limit to identify which properties are non-compliant and must take action to reduce emissions. We found that 4,266 properties (6,219 buildings) would be non-compliant if they did not take action. This amounts to approximately 25.5% of covered buildings. This is a little higher than the targeted 20% of most inefficient buildings, but not too off, which gives confidence in our analysis.
@@ -1415,10 +1430,12 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieWVraW05MiIsImEiOiJjazhueGlwdHMxM2s0M2ZxeDF5Z
       center: [-73.922160,40.755840],
       zoom: 12,
       minZoom: 12,
-      maxZoom: 12,
+      // maxZoom: 12,
       scrollZoom: false,
 
     });
+
+beforeMap.addControl(new mapboxgl.NavigationControl());
 
   var afterMap = new mapboxgl.Map({
       container: 'after',
@@ -1426,10 +1443,11 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieWVraW05MiIsImEiOiJjazhueGlwdHMxM2s0M2ZxeDF5Z
       center: [-73.922160,40.755840],
       zoom: 12,
       minZoom: 12,
-      maxZoom: 12,
+      // maxZoom: 12,
       scrollZoom: false,
   });
 
+afterMap.addControl(new mapboxgl.NavigationControl());
   // afterMap.on('load', function() {
   //       });
   // A selector or reference to HTML element
