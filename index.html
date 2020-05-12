@@ -355,7 +355,7 @@ main h4.section-header {
 }
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
-  background-color: #B6C5C3;
+  background-color: #CEDED6;
 }
 
 /* Style the accordion panel. Note: hidden by default */
@@ -436,7 +436,7 @@ main h4.section-header {
             <!-- <div class= -->
             <h5>#GreenNewDeal4NY</h5>
             <p>
-              In an ambitious attempt to tackle climate change, on April 18, 2019, New York City (NYC) passed its “Green New Deal,” the Climate Mobilization Act. The Climate Mobilization Act is a package of legislation that aims to reduce the city’s greenhouse gas (GHG) emissions by 80% by 2050.
+              On April 18, 2019, New York City (NYC) passed its “Green New Deal,” the Climate Mobilization Act. The Climate Mobilization Act is a package of legislation that aims to reduce the city’s greenhouse gas (GHG) emissions by 80% by 2050.
             </p>
           </div>
           <div id="firstsection2" class="hidden">
@@ -491,14 +491,22 @@ main h4.section-header {
         <br>
 </div>
 <!-- map intro -->
+<!-- <div class= "rowCenter">
+  <div class="col-12">
+    <h5>Is NYC on track to reduce emissions by 40% by 2030?</h5>
+      <p>We delved into the data to understand how much work needs to be done.</p>
+  </div>
+</div> -->
+
 <div class="row">
         <div class="col-4 bldgnumTextColumn">
-          <h5>Is NYC on track to reduce emissions by 40% by 2030?
-            <br><br>We delved into the data to understand how much work needs to be done.
-          </h5>
+          <div>
+            <h5>Is NYC on track to reduce emissions by 40% by 2030?</h5>
+            <p>We delved into the data to understand how much work needs to be done.</p>
+          </div>
           <div id="bldgsNumText">
             <h5>Large gaps in available data make it difficult to answer that question.</h5>
-            <p> The city currently is missing GHG emissions data for about 40% of the covered buildings. About 50,000 buildings will be covered by LL97*, but the city only has emissions data from about 27,000 buildings.
+            <p> Currently, the city is missing GHG emissions data for about 40% of the covered buildings. About 50,000 buildings will be covered by LL97*, but the city only has emissions data from about 27,000 buildings.
               <p class="caveat">*Source: NYC Office of Sustainability</p></p>
             <br><br>
    <p>Using the arrows on the map below, slide between the two maps to view where we're missing data.
@@ -592,7 +600,8 @@ main h4.section-header {
     <div class="row">
       <div class="col-12">
         <h5>How far does the existing data take us?</h5>
-        <p>Despite having limited data, we still wanted to see how far towards the 40% by 2030 goal the existing data could take us. We cleaned the data to only include private buildings with reported emissions greater than zero. Then we self-assigned buildings an occupancy group based on the self-reported primary use. (See methodology section for full explanation). </p>
+        <p>With the data limitations in mind, we estimated the emissions that would be reduced if LL84 covered buildings complied with LL97.
+          We cleaned the data to only include private buildings with reported emissions greater than zero. Then we self-assigned buildings an occupancy group based on the self-reported primary use. (See methodology section for full explanation). </p>
         <p>This resulted in 19,697 properties (for a total of 24,392 buildings) with what we considered “usable” data. Of these, 4,266 properties (6,219 buildings) are non-compliant for the 2024 limit, meaning 25% of buildings require energy retrofits and improvements to meet the 2024 limit. If all of these buildings fully complied to reduce their emissions to the 2024 level, the aggregate emissions reduction would be 6,249,605 MTCO2e.</p>
       </div>
     </div>
@@ -1133,16 +1142,15 @@ function estimatedEmissionsSetup() {
       .attr('x', (stack2Offset) + ((i % emissionsStackWidth) * squareTotalWidth))
       .attr('y', svgHeight - ((Math.floor(i/emissionsStackWidth) * squareTotalWidth))-50)
       .style('opacity', 0);
-
-    estimatedEmissionsGroup.append('text')
-      .attr('class', 'text')
-      .text('Estimated emissions based on LL84')
-      .attr('fill', '#214B47')
-      .style('font-size', '18px')
-      .attr('x',(stack2Offset) + ((i % emissionsStackWidth) * squareTotalWidth))
-      .attr('y', svgHeight-10)
-      .style('opacity', 0);
-  };
+  }
+  estimatedEmissionsGroup.append('text')
+    .attr('class', 'text')
+    .text('Estimated emissions based on LL84')
+    .attr('fill', '#214B47')
+    .style('font-size', '17px')
+    .attr('x',(stack2Offset))
+    .attr('y', svgHeight-10)
+    .style('opacity', 0);
 
   // Reduced Emissions
   for (var i = reducedEmissionsSquares; i >= 0; i-=1) {
