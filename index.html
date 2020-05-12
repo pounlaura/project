@@ -70,6 +70,12 @@
       color: #214B47;
       font-size: 24px;
     }
+
+    h6 {
+      color: #0C281F;
+      font-size: 20px;
+    }
+
     h1.story-heading {
       font-weight:400;
       font-family: "Montserrat", sans-serif;
@@ -290,6 +296,47 @@ main h4.section-header {
       line-height: 1.7;
 
     }
+
+/* Styling for the accordion methods at the botton */
+ /* Style the buttons that are used to open and close the accordion panel */
+    .accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  transition: .6s;
+
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #B6C5C3;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+.methods {
+  background-color: #F8F8F8;
+}
+
+#p-panel {
+  margin-left: 50px;
+  margin-right: 40px;
+}
 
 	</style>
 </head>
@@ -519,8 +566,93 @@ main h4.section-header {
         <p>On a positive note, our analysis suggests that the LL97 can achieve more than its stated goal to reduce building emissions at a faster and greater rate than planned.</p>
       </div>
     </div>
+
   </main><!-- /.container -->
 
+<!-- Creating the methods section at the end of the package -->
+<div class="methods">
+<button class="accordion">Read about our Methodology</button>
+<div class="panel" >
+  <br>
+  <br>
+  <h5>How We Cleaned our Data and Did our Analysis</h5>
+  <br>
+<h6>Identifying Buildings Covered by Local Law 97</h6>
+  <p >There currently is no official list of buildings that are covered by Local Law 97. However, the NYC Mayor’s Office of Sustainability has <a href="https://retrofitaccelerator.cityofnewyork.us/sites/default/files/public/MOS%20CMA%20General%20Factsheet.pdf" target="_blank">stated</a> that 50,000 buildings across 22,000 properties are expected to be affected by LL97. In order to map these ~50,000 buildings, we used the <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" target="_blank">2019 PLUTO data </a> to filter using the following criteria (obtained from the Urban Green Council) to estimate which buildings are covered buildings:</p>
+  <ol>
+    <li>Any building on a property with an area (gross square feet) larger than 100,000 SF
+</li>
+    <li>NO building on a property with an area smaller than 25,000 SF
+</li>
+    <li>Any single building on a property with an area between 25,000 and 100,000 SF
+</li>
+    <li>All buildings on properties between 25,000 and 100,000 SF where the total property floor area divided by the building count is greater than 25,000 SF (the number of equally sized buildings that could exist on that property are counted)
+</li>
+  </ol>
+  <p>We then joined the resulting filtered list of PLUTO tax lots with the <a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank">NYC Building Footprints</a>. The result is the map of 50,000 covered buildings.</p>
+
+<br>
+<br>
+<h6>Covered Buildings with Data</h6>
+<p >To make the map of the covered buildings with emissions data, we used the <a href="https://data.cityofnewyork.us/Environment/Energy-and-Water-Data-Disclosure-for-Local-Law-84-/vdzd-yy49" target="_blank">2019 Local Law 84</a> dataset. We removed all city buildings from the dataset resulting in 23,666 properties (or 27,294 buildings). Then this data was joined with the NYC Building Footprints to map.</p>
+<br>
+<br>
+<h6>Gathering Building Emissions Data for Covered Buildings</h6>
+<p >We relied on the Local Law 84 Energy and Water Disclosure data for building emissions. However, the 2019 (calendar year 2018) LL84 data included only ~26,000 properties. We then filtered the data by the following steps to remove unusable entries:</p>
+<ol>
+  <li>Removed all city buildings (city buildings are exempt from the LL97 limits and follow a different requirement)
+
+</li>
+  <li>Removed all rows where reported total GHG emissions is zero or not available
+
+</li>
+  <li>Removed all rows where the Source EUI is zero or not available
+</li>
+</ol>
+<p>The LL84 data does not include building occupancy group, which is the category that the LL97 limits are based on. Therefore we manually assigned an occupancy group for each property based on its self-reported primary use type. We pulled all the unique use types and mapped them to an occupancy group by reading through the occupancy group definitions in the <a href="https://up.codes/viewer/new_york_city/nyc-building-code-2014/chapter/3/use-and-occupancy-classification#3" target="_blank">NYC Building Code</a>. There were some reported use types that were difficult to categorize so we did not assign a group code to each use. We recognize that the occupancy group matching is likely to have errors. However, with no crosswalk between buildings or building class (in the PLUTO dataset) with occupancy group, this was the method we employed.</p>
+<br>
+<br>
+<p>TABLE OF USES MATCHED TO OCCUPANCY GROUPS TO BE ADDED</p>
+<br>
+<br>
+<p>With building occupancy groups assigned, we then filtered out the buildings not assigned an occupancy group. This left us with 19,697 properties (24,671 buildings). We used the occupancy group to add the 2024 emissions intensity limit for all properties. </p>
+<br>
+<b>Calculating 2018 GHG Emissions</b>
+<p>Instead of using the existing total GHG emissions column in LL84, we re-calculated emissions for each property using the emissions coefficients in LL97 for electricity, natural gas, fuel oil #2, fuel oil #4, and steam.
+</p>
+<p>Then to calculate a 2018 GHG intensity for each property, we divided the total GHG emissions figure by the gross floor area. We were then able to compare the 2018 emissions intensity with the 2024 intensity limit to identify which properties are non-compliant and must take action to reduce emissions. We found that 4,266 properties (6,219 buildings) would be non-compliant if they did not take action. This amounts to approximately 25.5% of covered buildings. This is a little higher than the targeted 20% of most inefficient buildings, but not too off, which gives confidence in our analysis.
+</p>
+<p>We did not include analysis of what the pathway looks like in respect to 2030 because the emissions coefficients for 2030 have not yet been determined. The emissions amount can vary greatly depending on the coefficient.
+</p>
+<p></p>
+<br>
+<br>
+<h6>Exploring the Emissions Limit Impact Based on Occupancy Group</h6>
+<p>To explore the importance of the occupancy group of a building on its emissions limit, we looked at what the 2024 emissions intensity would be if occupancy group were assigned based on solely the primary use and the top three reported uses. So we matched the second and third uses to occupancy groups as well. We then calculated the floor area percentage of each use to calculate a weighted average of the emissions intensity limits.The reported square footage of the three uses did not always match the reported gross floor area so we added the square footage for the three uses to calculate our own total building area column. As can be seen in the two example buildings, how a building’s occupancy class is determined can have a significant impact on its emissions intensity limit and how much the building must be retrofitted.
+</p>
+<br>
+<br>
+<h6>Calculating the Projected Emissions Reduction from Covered Buildings by 2024</h6>
+<p>We calculated the amount of GHG emissions that each building must reduce by 2024 to be compliant by subtracting the 2024 intensity from the 2018 intensity. Then multiplied this by the total floor area (MTCO2e). Then summed this value for all 19,697 properties. This resulted in 6,248,851.6 million MTCO2e being reduced by 2024 if all buildings complied.
+</p>
+<br>
+<br><br>
+<br>
+
+
+</div>
+</div>
+<div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <p id="p-panel">Webpage created: May 11, 2020</p>
+</div>
+
+<!-- end of the methods section -->
 
 <script type="text/javascript">
 
@@ -999,9 +1131,25 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieWVraW05MiIsImEiOiJjazhueGlwdHMxM2s0M2ZxeDF5Z
       // mousemove: true
   });
 
-  map.addControl(new mapboxgl.NavigationControl())
+  // map.addControl(new mapboxgl.NavigationControl())
 
 
+// Script for the accordion methods section
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
 
 </script>
 
