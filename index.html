@@ -329,6 +329,11 @@ main h4.section-header {
 
 }
 
+.panel-text{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
 .methods {
   background-color: #F8F8F8;
 }
@@ -337,6 +342,7 @@ main h4.section-header {
   margin-left: 50px;
   margin-right: 40px;
 }
+
 
 	</style>
 </head>
@@ -528,14 +534,19 @@ main h4.section-header {
           <h5 id="barGraphText1">A typical mixed-use building in NYC is complicated.</h5>
           <div>
           <h5>1390 Saint Nicholas Ave. in Manhattan </h5>
-          <p>three uses</p>
+          <p>Top Three Primary Uses</p>
+          <ol>
+            <li>Multifamily Housing - 43%</li>
+            <li>Office - 43%</li>
+            <li>Retail Store - 14%</li>
+          </ol>
         </div>
           <img src="1390-nicholas-street.jpg"  width="300" height="200">
 
          </div>
       <div class="col-8 " id="thirdvisualdiv">
         <div class=bar>
-          <figcaption style="padding-left: 40px">Source:
+          <figcaption style="padding-left: 40px">Source: Energy and Water Disclosure Data for Local Law 84 (2019)
           </figcaption>
         </div>
       </div>
@@ -575,6 +586,7 @@ main h4.section-header {
 <div class="panel" >
   <br>
   <br>
+  <div class="panel-text">
   <h5>How We Cleaned our Data and Did our Analysis</h5>
   <br>
 <h6>Identifying Buildings Covered by Local Law 97</h6>
@@ -638,6 +650,7 @@ main h4.section-header {
 <br>
 <br><br>
 <br>
+</div>
 
 
 </div>
@@ -1185,7 +1198,6 @@ mapboxgl.accessToken = 'pk.eyJ1IjoieWVraW05MiIsImEiOiJjazhueGlwdHMxM2s0M2ZxeDF5Z
 
 
 // Script for the accordion methods section
-
 var acc = document.getElementsByClassName("accordion");
 var i;
 
