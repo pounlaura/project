@@ -398,6 +398,11 @@ main h4.section-header {
 
 }
 
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
 	</style>
 </head>
 
@@ -417,6 +422,7 @@ main h4.section-header {
                 </div>
               </div>
             </header>
+
      <!--Intro/Background on 80 x 50-->
      <main role="main" class="container bodycontainer">
        <br>
@@ -431,122 +437,49 @@ main h4.section-header {
        We delved into the regulations and currently available emissions data to gain insights on what it means for NYC to achieve the law's goals.
       </p> -->
       <br>
+      <!-- new intro -->
+      <div class="rowCenter">
+        <div class="col-12" id="fifthvisualdiv">
+          <h5>The pathway to reducing emissions can't start without accurate data.</h5>
+          <p style="letter-spacing: 0.5px">To tackle climate change, NYC has charted a path to reducing its greenhouse gas(GHG) emissions by 80% by 2050. With recently implemented Local Law 97(LL97), NYC aims to reduce the city's emissions by 40% by 2030 by requiring large buildings to reduce their emissions. Is NYC on track to meet this goal? We delved into the data to understand how much work needs to be done.
+    </p> <br>
+        </div>
+      </div>
+      <br>
+
       <div class="row">
-        <div id ="trigger1" class="spacer s0"></div>
-        <div class="col-4 hidden" id="reveal1">
-          <h5>
-            To tackle climate change, NYC has charted a path to reducing its greenhouse gas emissions by 80% by 2050.  </h5>
-          <!-- <h5>
-            What does the path look like?
-          </h5> -->
-        </div>
-        <div class="col-8 hidden" style="padding: 30px">
-
-        </div>
-      </div>
-      <div class="row">
-
-        <div class="col-4 firstsection">
-        <div id ="trigger2" class="spacer s0"></div>
-
-          <div id="firstsection1" class="hidden">
-            <!-- <div class= -->
-            <h5>#GreenNewDeal4NY</h5>
-            <p>
-              On April 18, 2019, New York City (NYC) passed its “Green New Deal,” the Climate Mobilization Act. The Climate Mobilization Act is a package of legislation that aims to reduce the city’s greenhouse gas (GHG) emissions by 80% by 2050.
-            </p>
+              <div class="col-4 bldgnumTextColumn">
+                <!-- <div>
+                  <h5>Is NYC on track to reduce emissions by 40% by 2030?</h5>
+                  <p>We delved into the data to understand how much work needs to be done.</p>
+                </div> -->
+                <div id="bldgsNumText">
+                  <h5>Large gaps in available data make it difficult to answer that question.</h5>
+                  <p> Currently, the city is missing GHG emissions data for about 30% of buildings covered by LL97. About 42,000 buildings will be covered by LL97*, but the city only has emissions data for about 29,500.
+                    <br><br> Local Law 84(LL84) requires NYC's large buildings to disclose energy usage, providing the basis for LL97 data. With many limitations to the data, there is no comprehensive dataset for all buildings covered by LL97--it will be difficult for the city to enforce the law and difficult for building owners to understand the actions they need to take in order to avoid fines in 2024.
+                    <p class="caveat">*Source: NYC Office of Sustainability</p></p>
+                  <br><br>
+         <p>Using the arrows on the map below, slide between the two maps to view where data is missing.
+                  </p>
+              </div>
+               </div>
+            <div class="col-8" id="secondvisualdiv">
+              <div class="bldgsNum">
+              </div>
+            </div>
           </div>
-          <div id="firstsection2" class="hidden">
-            <!-- <div class= -->
-            <p>
-              At the crux of the Climate Mobilization Act is Local Law 97 (LL97) which aims to reduce the city’s building emissions 40% by 2030 from 2005 levels. LL97 aims to achieve this by targeting large buildings over 25,000 square feet (SF) and requiring these buildings to reduce their GHG emissions to certain levels by 2024 and 2030. If owners do not comply, they will face steep fines. Therefore, owners of affected (covered) buildings must start planning now to retrofit their buildings and make energy-related improvements to be able to comply with LL97.
-            </p>
-          </div>
-          <div id="firstsection3" class="hidden">
-            <!-- <div class= -->
-            <p>
-              A key component of successfully implementing LL97 is Local Law 84 (LL84) passed in 2009, which requires large buildings 50,000 SF+ to annually report its energy usage. With a 2016 amendment (Local Law 133),  LL84 now requires all buildings over 25,000 SF to report energy usage. The data collected through LL84 is critical to ensuring that NYC can successfully monitor and enforce LL97.
-            </p>
-          </div>
-
-        </div>
-
-        <!-- timeline -->
-        <div class="col-8 timelineSticky">
-          <div id ="trigger3" class="spacer s0"></div>
-          <div id="timelinediv" class="hidden" style="border-left: 5px solid #CEDED6; padding: 30px">
-          <p class="timeline">
-            <span id="timeline2">2009: Local Law 84 passed </span>
-            <br><br>
-            <span id="timeline1">2019: Local Law 97 passed (part of Climate Mobilization Act)</span>
-            <br><br>
-            2024: First set of building emission limits go into effect
-            <br><br>
-            2030: Second set of building emission limits go into effect
-            <br><br>
-          </p>
-          </div>
-
-      </div>
-</div>
-      <!-- diagram 1 -->
-<div class="row">
-        <div class="col-4 emissionsTextColumn">
-          <h5>We wanted to understand: what is the pathway to achieving LL97's goals?</h5>
-          <h5 id="emissionsHeadline1"><span style="text-decoration: underline">GHG Emissions by the Numbers</span><br><br>NYC's annual emissions are 50.7 million metric tons of CO2 equivalent (mmtco2e).</h5>
-          <h5 id="emissionsHeadline2">Buildings are responsible for 70% of those emissions.</h5>
-          <h5 id="emissionsHeadline3">Covered buildings under LL84 emitted 19.5 mmtco2e in 2018.
-          <p class="caveat">*estimated emissions from 25,164 covered buildings</p></h5>
-          <h5 id="emissionsHeadline4">LL97 aims to reduce at least 5.3 mmtco2e by 2030 from covered buildings.</h5>
-        </div>
-      <div class="col-8" id="firstvisualdiv">
-         <div class="squaresvg">
-           <figcaption style="padding-left: 40px">
-           </figcaption>
-         </div>
-        </div>
-        <br>
-</div>
-<!-- map intro -->
-<!-- <div class= "rowCenter">
-  <div class="col-12">
-    <h5>Is NYC on track to reduce emissions by 40% by 2030?</h5>
-      <p>We delved into the data to understand how much work needs to be done.</p>
-  </div>
-</div> -->
-
-<div class="row">
-        <div class="col-4 bldgnumTextColumn">
-          <div>
-            <h5>Is NYC on track to reduce emissions by 40% by 2030?</h5>
-            <p>We delved into the data to understand how much work needs to be done.</p>
-          </div>
-          <div id="bldgsNumText">
-            <h5>Large gaps in available data make it difficult to answer that question.</h5>
-            <p> Currently, the city is missing GHG emissions data for about 40% of the covered buildings. About 50,000 buildings will be covered by LL97*, but the city only has emissions data from about 27,000 buildings.
-              <br><br> Without a comprehensive dataset of covered building emissions, it will be difficult for the city to enforce LL97 and difficult for building owners to understand the actions they need to take in order to avoid fines in 2024.
-              <p class="caveat">*Source: NYC Office of Sustainability</p></p>
-            <br><br>
-   <p>Using the arrows on the map below, slide between the two maps to view where we're missing data.
-            </p>
-        </div>
-         </div>
-      <div class="col-8" id="secondvisualdiv">
-        <div class="bldgsNum">
-        </div>
-      </div>
-    </div>
-
+<!-- map title -->
 <div class="maptitle">
     <div>
-      <h5>50,000 buildings should be covered...
+      <h5>42,000 buildings should be covered...
       </h5>
     </div>
     <div>
-      <h5>only 27,000 have emissions data
+      <h5>only 29,500 have emissions data
       </h5>
     </div>
 </div>
+
 <!-- slider map -->
 <div class="maprow">
   <div id="comparison-container">
@@ -555,17 +488,8 @@ main h4.section-header {
 </div>
     <div id="after" class="map">   ;
 </div>
-		<!-- <div class='map-overlay' id='features'><h5>Visualizing Data Gaps for Local Law 97</h5>
-			<div id='pd'>
-  			<p>Swipe and pan around the map to explore which covered buildings that have no emissions data.</p>
-  			<p>Left Map: Estimated Covered Buildings</p>
-  			<p>Right Map: Covered Buildings with Data</p>
-  			<p>Source: NYC PLUTO and Local Law 84 Disclosure Data</p>
-      </div> -->
-    </div>
-  </div>
 </div>
-
+</div>
 <!-- map source -->
 <div class="maptitle" style="margin-bottom: 100px">
     <div>
@@ -577,23 +501,35 @@ main h4.section-header {
       </figcaption>
     </div>
 </div>
+
+<!-- diagram 1 -->
+<div class="row">
+  <div class="col-4 emissionsTextColumn">
+    <h5><span style="text-decoration: underline">GHG Emissions by the Numbers</span></h5>
+    <h5 id="emissionsHeadline1"><br><br>NYC's annual GHG emissions are 50.7 million metric tons of CO<sub>2</sub> equivalent (mmtco2e).</h5>
+    <h5 id="emissionsHeadline2">Buildings are responsible for 70% of those emissions.</h5>
+    <h5 id="emissionsHeadline3">Covered buildings under LL84 emitted 19.5 mmtco2e in 2018.
+    <p class="caveat">*estimated emissions from 25,164 covered buildings</p></h5>
+    <h5 id="emissionsHeadline4">LL97 aims to reduce at least 5.3 mmtco2e by 2030 from covered buildings.</h5>
+  </div>
+<div class="col-8" id="firstvisualdiv">
+   <div class="squaresvg">
+     <figcaption style="padding-left: 40px">
+     </figcaption>
+   </div>
+  </div>
+  <br>
+</div>
+
 <!-- zooming in on one mixed use building -->
 <div class="rowCenter">
   <h5>There is no clear way to determine the emissions limit for each building.</h5>
-  <p>Even with emissions data, it's difficult to figure out how much emissions each building owner has to reduce. LL97 establishes different emissions limits based on building occupancy groups (occupancy groups are based on building use). However, the existing LL84 disclosure dataset does not include the buildings' occupancy groups. And currently, there is no easy method to match a building to its occupancy groups.</p>
+  <p>Even with emissions data, it's difficult to figure out how much emissions each building owner has to reduce. LL97 establishes different emissions limits based on building occupancy groups, which are based on building use. However, the existing LL84 disclosure dataset does not include the buildings' occupancy groups. Furthermore, this is currently, no easy method to match a building to its occupancy groups.</p>
   <br>
-  <p>Moreover, NYC's buildings typically have multiple uses, resulting in multiple occupancy groups. Mixed-use buildings have a combination of residential, commercial, medical, educational, institutional, etc. This adds another level of complication because how the occupancy group is defined will affect the emissions limit for each building.</p>
+  <p>Moreover, NYC's buildings typically have multiple uses, with mixed-use buildings hosting a combination of functions including residential, commercial, medical, educational, institutional, and more. This results in multiple occupancy groups for a single building, which adds another layer of complexity, as how occupancy groups are defined affects the emissions limit for each building.</p>
 </div>
 <div class="row">
         <div class="col-4 barGraphTextColumn" >
-          <!-- <div>
-          <h5>Even with emissions data, there is no clear way to determine the emissions limit for each building.</h5>
-          <p>LL97 establishes different emissions limits by the buildings' occupancy groups, which are based on building use. However, the existing LL84 disclosure dataset does not include the buildings' occupancy groups. And currently, there is no easy method to match a building to its occupancy groups.</p>
-        </div>
-          <div>
-          <h5>NYC's buildings typically have multiple uses.</h5>
-          <p>Mixed-use buildings have a combination of residential, commercial, medical, educational, institutional, etc. This adds another level of complication. How the occupancy group is defined will affect the emissions limit for each building.</p>
-        </div> -->
           <div>
           <h5 id="barGraphText1">For example, 1390 Saint Nicholas Ave. has 3 different primary uses:</h5>
           <ol style="text-align: left; list-style: inside;">
@@ -602,7 +538,7 @@ main h4.section-header {
             <li>Retail Store: 14%</li>
           </ol>
         </div>
-          <h5 id="barGraphText2">The amount of emissions that need to be reduced changes depending on how occupancy group is defined.</h5>
+          <h5 id="barGraphText2">The amount of emissions that need to be reduced changes depending on how the occupancy group is defined.</h5>
          </div>
       <div class="col-8" id="thirdvisualdiv">
         <div class="bldgImg hidden"><img src="1390-nicholas-street.jpg" style="height: 400px"></img>
@@ -614,11 +550,10 @@ main h4.section-header {
       </div>
     </div>
 
-
     <div class="rowCenter">
       <div class="col-12">
         <h5>How far does the existing data take us?</h5>
-        <p>With the data limitations in mind, we estimated the emissions impact that the currently available data would have if all LL84 covered buildings complied with LL97. We cleaned the data to only include private buildings with reported emissions greater than zero. Then, we self-assigned buildings a primary occupancy group based on their self-reported primary use. (See methodology section for details.) </p>
+        <p>With these data limitations in mind, we estimated the emissions impact that the currently available data would have if all LL84 covered buildings complied with LL97. We cleaned the data to only include private buildings with reported emissions greater than zero. Then, we self-assigned buildings a primary occupancy group based on their self-reported primary use. (See methodology section for details.) </p>
         <ol>
         <li>This resulted in 24,392 buildings (or 19,697 properties) with what we considered “usable” data. </li>
         <li>Of these, 6,219 buildings (4,266 properties) are non-compliant for the 2024 limit, meaning 25% of buildings require energy retrofits and improvements by 2024.</li>
@@ -627,30 +562,91 @@ main h4.section-header {
 
       </div>
     </div>
-
-<!-- estimated emissions compared with goal emissions -->
+    <!-- estimated emissions compared with goal emissions -->
     <div class="row estimatedEmissionsRow">
-  <div class="col-4 textColumn">
+    <div class="col-4 textColumn">
     <h5 id="estimatedEmissionsHeadline1">If all 6,219 buildings reduce emissions to meet the 2024 level, the estimated impact in emission reduction is 6.2 mmtco2e.
-</h5>
+    </h5>
     <h5 id="estimatedEmissionsHeadline2">That's almost 1 mmtco2e ahead of the minimum goal for 2030.</h5>
-  </div>
-  <div class="col-8" id="fourthvisualdiv">
+    </div>
+    <div class="col-8" id="fourthvisualdiv">
     <div class="estimatedEmissions">
       <svg></svg>
     </div>
-  </div>
-</div>
+    </div>
+    </div>
+
+
 
     <div class="rowCenter">
       <div class="col-12" id="fifthvisualdiv">
-        <h5>The pathway to reducing emissions can't start without accurate data.</h5>
-        <p style="letter-spacing: 0.5px">We discovered there are serious limitations, caveats, and questions with the existing data that make it challenging for NYC to be able to successfully implement LL97. However, despite the limited data, our analysis suggests that NYC can significantly surpass its 40% by 2030 goal at a faster and greater rate than planned. NYC could potentially surpass its goal by ~1 mmtco2e six years early in 2024. Whether this can actually be achieved lies in the details of the data.
+        <h5>The importance of correct data.</h5>
+        <p style="letter-spacing: 0.5px">We discovered there are serious limitations, caveats, and questions regarding the existing data that will make it challenging for NYC to be able to successfully implement LL97. However, despite the limited data, our analysis suggests that NYC can significantly surpass its 40% by 2030 goal at a faster and greater rate than planned. NYC could potentially surpass its goal by ~1 mmtco2e by 2024, six years ahead of time. Whether this can actually be achieved lies in the details of the data.
 </p> <br>
-        <p style="letter-spacing: 0.5px">First and foremost, NYC needs to expand enforcement of LL84 reporting and develop a method and dataset to match buildings with their occupancy group. These issues must be ironed out soon because the first emissions limit goes into effect in less than four years and retrofitting buildings requires significant time, effort, and investment. In order for these improvements to be made, building owners first need certainty about whether they are covered by LL97 and second, what their emission limits are. Accurate data will enable building owners to take the appropriate measures to comply with the law. Furthermore, without a clear understanding of which buildings are covered and their respective emissions limits, the City, specifically the new Office of Building Energy and Emissions Performance within NYC Dept. of Buildings will not be able to enforce the law and ensure that building owners reduce emissions. Without robust monitoring and enforcement, there may be little actual reduction in building emissions. By filling in the data gaps, NYC will be able to make progress in their pathway to reducing building emissions and reach the goal of 80% by 2050.
+        <p style="letter-spacing: 0.5px">First and foremost, NYC needs to expand enforcement of LL84 reporting and develop a method and dataset to match buildings with their occupancy group. These issues must be ironed out soon, as the first emissions limit goes into effect in less than four years and retrofitting buildings requires significant time, effort, and investment. In order for these improvements to be made, building owners first need certainty about whether they are covered by LL97 and second, what their emission limits are. Accurate data will enable building owners to take the appropriate measures to comply with the law. Furthermore, without a clear understanding of which buildings are covered and their respective emissions limits, the city, specifically the new Office of Building Energy and Emissions Performance within the NYC Department of Buildings, will not be able to enforce the law and ensure that building owners reduce emissions. Without robust monitoring and enforcement, there may be little actual reduction in building emissions. By filling in the data gaps, NYC will be able to make progress in their pathway to reducing building emissions and reach the goal of 80% by 2050.
 </p>
       </div>
     </div>
+
+    <div class="row">
+      <div id ="trigger1" class="spacer s0"></div>
+      <div class="col-4 hidden" id="reveal1">
+        <h5>
+          Local Law 97 background </h5>
+        <!-- <h5>
+          What does the path look like?
+        </h5> -->
+      </div>
+      <div class="col-8 hidden" style="padding: 30px">
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-4 firstsection">
+      <div id ="trigger2" class="spacer s0"></div>
+
+        <div id="firstsection1" class="hidden">
+          <!-- <div class= -->
+          <h5>#GreenNewDeal4NY</h5>
+          <p>
+            On April 18, 2019, New York City passed its “Green New Deal,” the Climate Mobilization Act, a package of legislation that aims to reduce the city’s greenhouse gas (GHG) emissions by 80% by 2050.
+          </p>
+        </div>
+        <div id="firstsection2" class="hidden">
+          <!-- <div class= -->
+          <p>
+            At the crux of the Climate Mobilization Act is Local Law 97 (LL97), which aims to reduce the city’s building emissions 40% by 2030 from 2005 levels. LL97 aims to achieve this by requiring large buildings over 25,000 square feet to reduce their GHG emissions to certain levels by 2024 and 2030. If owners do not comply, they will face steep fines. Therefore, owners of affected (covered) buildings must start planning now to retrofit their buildings and make energy-related improvements to be able to comply with LL97.
+          </p>
+        </div>
+        <div id="firstsection3" class="hidden">
+          <!-- <div class= -->
+          <p>
+            A key component of successfully implementing LL97 is Local Law 84 (LL84), passed in 2009, which requires buildings over 50,000 square feet to annually report their energy usage. With a 2016 amendment (Local Law 133),  LL84 now requires all buildings over 25,000 square feet to report energy usage. The data collected through LL84 is critical to ensuring that NYC can successfully monitor and enforce LL97.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- timeline -->
+      <div class="col-8 timelineSticky">
+        <div id ="trigger3" class="spacer s0"></div>
+        <div id="timelinediv" class="hidden" style="border-left: 5px solid #CEDED6; padding: 30px">
+        <p class="timeline">
+          <span id="timeline2">2009: Local Law 84 passed </span>
+          <br><br>
+          <span id="timeline1">2019: Local Law 97 passed (part of Climate Mobilization Act)</span>
+          <br><br>
+          2024: First set of building emission limits go into effect
+          <br><br>
+          2030: Second set of building emission limits go into effect
+          <br><br>
+        </p>
+        </div>
+
+    </div>
+</div>
 
   </main><!-- /.container -->
 
@@ -662,17 +658,20 @@ main h4.section-header {
   <div class="panel-text">
     <h5>How We Cleaned our Data and Did our Analysis</h5> <br>
     <h6>Identifying Buildings Covered by Local Law 97</h6>
-    <p>There currently is no official list of buildings that are covered by Local Law 97. However, the NYC Mayor’s Office of Sustainability has <a href="https://retrofitaccelerator.cityofnewyork.us/sites/default/files/public/MOS%20CMA%20General%20Factsheet.pdf" target="_blank">stated</a> that 50,000 buildings across 22,000 properties are expected to be affected by LL97. In order to map these ~50,000 buildings, we used the <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" target="_blank">2020 PLUTO data </a> to filter using the following criteria (obtained from the Urban Green Council) to estimate which buildings are covered buildings:</p>
+    <p>There currently is no official list of buildings that are covered by Local Law 97. However, the NYC Mayor’s Office of Sustainability has <a href="https://retrofitaccelerator.cityofnewyork.us/sites/default/files/public/MOS%20CMA%20General%20Factsheet.pdf" target="_blank">stated</a> that 50,000 buildings across 22,000 properties are expected to be affected by LL97. In order to map these ~50,000 buildings, we used the <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page" target="_blank">2020 PLUTO data </a> to filter using the following criteria (obtained from the Urban Green Council) to estimate which buildings are covered by the new law:</p>
     <ol>
       <li>Any building on a property with an area (gross square feet) larger than 100,000 SF</li>
     <li>NO building on a property with an area smaller than 25,000 SF</li>
     <li>Any single building on a property with an area between 25,000 and 100,000 SF</li>
     <li>All buildings on properties between 25,000 and 100,000 SF where the total property floor area divided by the building count is greater than 25,000 SF (the number of equally sized buildings that could exist on that property are counted)</li>
     </ol>
-    <p>We then joined the resulting filtered list of PLUTO tax lots with the <a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank">NYC Building Footprints</a>. The result is the map of 50,000 covered buildings.</p>
+    <p>We then joined the resulting filtered list of PLUTO tax lots with the <a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank">NYC Building Footprints</a>. This results in approximately 50,000 covered buildings.
+
+To capture further potential buildings exempt from LL97, we relied on an analysis done by our peers (Charles Hatfield and Katherine Huang) who attempted to identify exempt buildings. We joined their list of exempt buildings to remove further buildings. Once we filter out these potentially exempt buildings, the result is 42,420 buildings.
+</p>
     <br><br>
     <h6>Covered Buildings with Data</h6>
-    <p>To make the map of the covered buildings with emissions data, we used the <a href="https://data.cityofnewyork.us/Environment/Energy-and-Water-Data-Disclosure-for-Local-Law-84-/vdzd-yy49" target="_blank">2019 Local Law 84</a> dataset. We removed all city buildings from the dataset resulting in 23,666 properties (or 27,294 buildings). Then this data was joined with the NYC Building Footprints to map.</p>
+    <p>To make the map of the covered buildings with emissions data, we used the <a href="https://data.cityofnewyork.us/Environment/Energy-and-Water-Data-Disclosure-for-Local-Law-84-/vdzd-yy49" target="_blank">2019 Local Law 84</a> dataset. We removed all city buildings from the dataset resulting then joined the data with the NYC Building Footprints to map. We then further removed potential exempt buildings by removing the exempt buildings as identified by Charles Hatfield and Katherine Huang in their project). This results in the 29,520 buildings with data as shown on the map.</p>
     <br><br>
     <h6>Gathering Building Emissions Data for Covered Buildings</h6>
     <p>We relied on the Local Law 84 Energy and Water Disclosure data for building emissions. However, the 2019 (calendar year 2018) LL84 data included only ~26,000 properties. We then filtered the data by the following steps to remove unusable entries:</p>
@@ -690,14 +689,12 @@ main h4.section-header {
     <h6>Calculating 2018 GHG Emissions</h6>
     <p>Instead of using the existing total GHG emissions column in LL84, we re-calculated emissions for each property using the emissions coefficients in LL97 for electricity, natural gas, fuel oil #2, fuel oil #4, and steam.
     </p>
-    <p>Then to calculate a 2018 GHG intensity for each property, we divided the total GHG emissions figure by the gross floor area. We were then able to compare the 2018 emissions intensity with the 2024 intensity limit to identify which properties are non-compliant and must take action to reduce emissions. We found that 4,266 properties (6,219 buildings) would be non-compliant if they did not take action. This amounts to approximately 25.5% of covered buildings. This is a little higher than the targeted 20% of most inefficient buildings, but not too off, which gives confidence in our analysis.
+    <p>Then to calculate a 2018 GHG intensity for each property, we divided the total GHG emissions figure by the gross floor area. We were then able to compare the 2018 emissions intensity with the 2024 intensity limit to identify which properties are non-compliant and must take action to reduce emissions. We found that 4,266 properties (6,219 buildings) would be non-compliant if they did not take action. This amounts to approximately 25.5% of covered buildings. This is a little higher than the targeted 20% of most inefficient buildings, but not too off, which gives confidence in our analysis.</p>
+    <p>We did not include analysis of what the pathway looks like with respect to 2030 because the emissions coefficients for 2030 have not yet been determined. The emissions limit can vary greatly depending on the coefficient.
     </p>
-    <p>We did not include analysis of what the pathway looks like in respect to 2030 because the emissions coefficients for 2030 have not yet been determined. The emissions amount can vary greatly depending on the coefficient.
-    </p>
-    <p></p>
     <br><br>
     <h6>Exploring the Emissions Limit Impact Based on Occupancy Group</h6>
-    <p>To explore the importance of the occupancy group of a building on its emissions limit, we looked at what the 2024 emissions intensity would be if occupancy group were assigned based on solely the primary use and the top three reported uses. So we matched the second and third uses to occupancy groups as well. We then calculated the floor area percentage of each use to calculate a weighted average of the emissions intensity limits.The reported square footage of the three uses did not always match the reported gross floor area so we added the square footage for the three uses to calculate our own total building area column. As can be seen in the two example buildings, how a building’s occupancy class is determined can have a significant impact on its emissions intensity limit and how much the building must be retrofitted.
+    <p>To explore the importance of the occupancy group of a building on its emissions limit, we looked at what the 2024 emissions intensity would be if occupancy group were assigned based on solely the primary use as well as top three reported uses. To do this, we matched the second and third uses to occupancy groups as well. We then calculated the floor area percentage of each use to calculate a weighted average of the emissions intensity limits.The reported square footage of the three uses did not always match the reported gross floor area so we added the square footage for the three uses to calculate our own total building area column. As can be seen in the two example buildings, how a building’s occupancy class is determined can have a significant impact on its emissions intensity limit and how much the building must be retrofitted.
     </p>
     <br><br>
     <h6>Calculating the Projected Emissions Reduction from Covered Buildings by 2024</h6>
@@ -958,7 +955,7 @@ var bldgNumSvg = function(){
     .range([height,0]);
   var barColors = {0: '#FF7A2A', 1: '#00A780'};
 
-  buildings = [["Covered Buildings", 50000],["Buildings with Data", 27000]]
+  buildings = [["Covered Buildings", 42000],["Buildings with Data", 29500]]
 
   var svg = d3.select('.bldgsNum').insert('svg', ':first-child')
     .attr("width", width)
