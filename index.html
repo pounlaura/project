@@ -455,27 +455,34 @@ sub {
                 </div> -->
                 <div id="bldgsNumText">
                   <h5>Large gaps in available data make it difficult to answer that question.</h5>
-                  <p> Currently, the city is missing GHG emissions data for about 30% of buildings covered by LL97. NYC Office of Sustainability estimates about 50,000 buildings will be covered* without providing an official list of buildings covered by the law. This is the first challenge in understanding this question. In our analysis, we found that about 42,000 buildings may be covered, but the city only has emissions data for about 29,500.
+                  <p> Currently, the city is missing GHG emissions data for about 40% of buildings covered by LL97. NYC Office of Sustainability estimates about 50,000 buildings will be covered without providing an official list of buildings covered by the law. This is the first challenge in understanding this question. Without an official list of buildings, it is difficult for building owners to be certain whether they are covered by the law and to map out NYC's progress and pathway for achieving LL97. <br><br>For our analysis, we developed an estimated list of covered buildings using criteria outlined in LL97. We found that about 50,000 buildings may be covered*, but the city only has emissions data for about 27,000 buildings.
                     <br><br> Local Law 84(LL84) requires NYC's large buildings to disclose energy usage, providing the basis for LL97 data. With many limitations to the data, there is no comprehensive emissions dataset for all buildings covered by LL97--it will be difficult for the city to enforce the law and difficult for building owners to understand the actions they need to take in order to avoid fines in 2024.
-                    <p class="caveat">*Source: NYC Office of Sustainability</p></p>
+                    <p class="caveat">*This is a very conservative estimate as we were unable to filter out all of the LL97 building exceptions. See methods for more details.</p></p>
                   <br><br>
          <p>Using the arrows on the map below, slide between the two maps to view where data is missing.
                   </p>
+
+
               </div>
                </div>
+
             <div class="col-8" id="secondvisualdiv">
               <div class="bldgsNum">
               </div>
             </div>
           </div>
+          <div class="row">
+            <p> Map caveats: The purpose of this map is to visualize the rough scale of data insufficiency with respect to LL97. This map is not intended to be fully accurate at the building level to indicate covered buildings. It is expected that some potentially non-covered buildings may be colored as covered due to the inabiltiy to accurate filter out all excpetions to LL97 (like Rikers Island).
+            </p>
+</div>
 <!-- map title -->
 <div class="maptitle">
     <div>
-      <h5>42,000 buildings should be covered...
+      <h5>50,000 buildings should be covered...
       </h5>
     </div>
     <div>
-      <h5>only 29,500 have emissions data
+      <h5>only 27,000 have emissions data
       </h5>
     </div>
 </div>
@@ -666,12 +673,11 @@ sub {
     <li>All buildings on properties between 25,000 and 100,000 SF where the total property floor area divided by the building count is greater than 25,000 SF (the number of equally sized buildings that could exist on that property are counted)</li>
     </ol>
     <p>We then joined the resulting filtered list of PLUTO tax lots with the <a href="https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh" target="_blank">NYC Building Footprints</a>. This results in approximately 50,000 covered buildings.
-
-To capture further potential buildings exempt from LL97, we relied on an analysis done by our peers (Charles Hatfield and Katherine Huang) who attempted to identify exempt buildings. We joined their list of exempt buildings to remove further buildings. Once we filter out these potentially exempt buildings, the result is 42,420 buildings.
 </p>
+<p>We recognize that this is not a fully accurate list of covered buildings as we were unable to accurately filter out all exempted building categories as listed in LL97. The data included in LL94 and PLUTO did not allow for clear filtering by the listed exception categories.
     <br><br>
     <h6>Covered Buildings with Data</h6>
-    <p>To make the map of the covered buildings with emissions data, we used the <a href="https://data.cityofnewyork.us/Environment/Energy-and-Water-Data-Disclosure-for-Local-Law-84-/vdzd-yy49" target="_blank">2019 Local Law 84</a> dataset. We removed all city buildings from the dataset resulting then joined the data with the NYC Building Footprints to map. We then further removed potential exempt buildings by removing the exempt buildings as identified by Charles Hatfield and Katherine Huang in their project). This results in the 29,520 buildings with data as shown on the map.</p>
+    <p>To make the map of the covered buildings with emissions data, we used the <a href="https://data.cityofnewyork.us/Environment/Energy-and-Water-Data-Disclosure-for-Local-Law-84-/vdzd-yy49" target="_blank">2019 Local Law 84</a> dataset. We removed all city buildings from the dataset resulting then joined the data with the NYC Building Footprints.</p>
     <br><br>
     <h6>Gathering Building Emissions Data for Covered Buildings</h6>
     <p>We relied on the Local Law 84 Energy and Water Disclosure data for building emissions. However, the 2019 (calendar year 2018) LL84 data included only ~26,000 properties. We then filtered the data by the following steps to remove unusable entries:</p>
